@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Real Homes</title>
+    
+    <!-- Meta SEO & Favicon -->
+    <meta name="description" content="Manage your property search, saved listings, booked tours, and agent inquiries on Real Homes.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Project Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+    <div class="dash-app-layout" id="dashAppLayout">
+        
+        <!-- Mobile Sidebar Backdrop Overlay -->
+        <div class="dash-sidebar-backdrop" id="dashSidebarBackdrop" onclick="closeMobileSidebar()"></div>
+
+        <!-- ==========================================================================
+             SIDEBAR (5-OPTION DASH BAR)
+             ========================================================================== -->
+        <aside class="dash-sidebar" id="dashSidebar">
+            
+            <!-- Sidebar Header -->
+            <div class="dash-sidebar-header">
+                <a href="index.html" class="dash-brand-logo">
+                    <img src="stackly1.webp" alt="Stackly Logo" style="height: 40px; width: auto;">
+                </a>
+                <button class="dash-sidebar-close" onclick="closeMobileSidebar()" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- User Status Card in Sidebar -->
+            <div class="dash-sidebar-user">
+                <div class="dash-user-avatar-wrap">
+                    <img src="assets/images/agent-profile-3.webp" alt="User Profile" class="dash-user-avatar" id="dashSidebarAvatar">
+                    <span class="dash-user-status-dot" title="Online Status"></span>
+                </div>
+                <div class="dash-user-info">
+                    <div class="dash-user-name" id="dashSidebarName">Eleanor Vance</div>
+                    <span class="dash-role-badge buyer" id="dashSidebarRoleBadge">
+                        <i class="fas fa-user-tag"></i> Buyer / Tenant
+                    </span>
+                </div>
+            </div>
+
+            <!-- 5-Option Dash Bar Navigation: BUYER ROLE -->
+            <div class="dash-nav-section" id="buyerSidebarNav">
+                <div class="dash-nav-label">Buyer Navigation</div>
+                <ul class="dash-nav-list">
+                    <!-- Option 1: Overview -->
+                    <li class="dash-nav-item active" data-target="buyer-overview" onclick="switchBuyerTab('buyer-overview')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Overview</span>
+                        </a>
+                    </li>
+                    <!-- Option 2: Saved Properties -->
+                    <li class="dash-nav-item" data-target="buyer-saved" onclick="switchBuyerTab('buyer-saved')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-heart nav-icon"></i>
+                            <span class="nav-text">Saved Homes</span>
+                            <span class="dash-nav-badge">4</span>
+                        </a>
+                    </li>
+                    <!-- Option 3: Booked Tours -->
+                    <li class="dash-nav-item" data-target="buyer-tours" onclick="switchBuyerTab('buyer-tours')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-calendar-check nav-icon"></i>
+                            <span class="nav-text">Tours & Visits</span>
+                            <span class="dash-nav-badge">2</span>
+                        </a>
+                    </li>
+                    <!-- Option 4: Offers & Inquiries -->
+                    <li class="dash-nav-item" data-target="buyer-offers" onclick="switchBuyerTab('buyer-offers')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-comments-dollar nav-icon"></i>
+                            <span class="nav-text">Offers & Chats</span>
+                            <span class="dash-nav-badge">2</span>
+                        </a>
+                    </li>
+                    <!-- Option 5: Profile & Preferences -->
+                    <li class="dash-nav-item" data-target="buyer-profile" onclick="switchBuyerTab('buyer-profile')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-sliders-h nav-icon"></i>
+                            <span class="nav-text">Preferences</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 5-Option Dash Bar Navigation: AGENT ROLE -->
+            <div class="dash-nav-section" id="agentSidebarNav" style="display: none;">
+                <div class="dash-nav-label">Agent Navigation</div>
+                <ul class="dash-nav-list">
+                    <!-- Option 1: Analytics & Overview -->
+                    <li class="dash-nav-item active" data-target="agent-overview" onclick="switchAgentTab('agent-overview')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-chart-line nav-icon"></i>
+                            <span class="nav-text">Overview & Stats</span>
+                        </a>
+                    </li>
+                    <!-- Option 2: My Listings -->
+                    <li class="dash-nav-item" data-target="agent-listings" onclick="switchAgentTab('agent-listings')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-building nav-icon"></i>
+                            <span class="nav-text">My Listings</span>
+                            <span class="dash-nav-badge">6</span>
+                        </a>
+                    </li>
+                    <!-- Option 3: Leads & Inquiries -->
+                    <li class="dash-nav-item" data-target="agent-leads" onclick="switchAgentTab('agent-leads')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-user-friends nav-icon"></i>
+                            <span class="nav-text">Leads & Inquiries</span>
+                            <span class="dash-nav-badge">5</span>
+                        </a>
+                    </li>
+                    <!-- Option 4: Scheduled Showings -->
+                    <li class="dash-nav-item" data-target="agent-showings" onclick="switchAgentTab('agent-showings')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-calendar-alt nav-icon"></i>
+                            <span class="nav-text">Showings Schedule</span>
+                            <span class="dash-nav-badge">3</span>
+                        </a>
+                    </li>
+                    <!-- Option 5: Profile & Agency -->
+                    <li class="dash-nav-item" data-target="agent-profile" onclick="switchAgentTab('agent-profile')">
+                        <a class="dash-nav-link">
+                            <i class="fas fa-id-badge nav-icon"></i>
+                            <span class="nav-text">Agency Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sidebar Footer -->
+            <div class="dash-sidebar-footer">
+                <button class="btn-sidebar-logout" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+
+        </aside>
+
+        <!-- ==========================================================================
+             MAIN CONTENT AREA
+             ========================================================================== -->
+        <main class="dash-main-wrapper">
+            
+            <!-- Sticky Top Header Bar -->
+            <header class="dash-topbar">
+                
+                <div class="dash-topbar-left">
+                    <!-- Mobile Hamburger -->
+                    <button class="dash-mobile-hamburger" onclick="toggleMobileSidebar()" aria-label="Open mobile menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <!-- Search Input Box -->
+                    <div class="dash-search-box">
+                        <i class="fas fa-search dash-search-icon"></i>
+                        <input type="text" class="dash-search-input" placeholder="Search properties, tours, agents..." onkeydown="if(event.key === 'Enter') window.location.href='404.html'">
+                    </div>
+                </div>
+
+                <div class="dash-topbar-right">
+                    
+                    <!-- Notification Bell -->
+                    <button class="dash-icon-btn" title="Notifications" onclick="window.location.href='404.html'">
+                        <i class="far fa-bell"></i>
+                        <span class="dash-badge-dot"></span>
+                    </button>
+
+                    <!-- Top Profile Preview -->
+                    <div class="dash-topbar-profile" onclick="currentRole === 'buyer' ? switchBuyerTab('buyer-profile') : switchAgentTab('agent-profile')">
+                        <img src="assets/images/agent-profile-3.webp" alt="User" class="dash-topbar-avatar" id="dashTopbarAvatar">
+                        <span class="dash-topbar-user-name" id="dashTopbarName">Eleanor Vance</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Dashboard Inner Content Body -->
+            <div class="dash-body">
+
+                <!-- ==================================================================
+                     ROLE 1: BUYER / TENANT DASHBOARD PANELS (5 OPTIONS)
+                     ================================================================== -->
+                <div class="buyer-panel-group">
+
+                    <!-- 1. BUYER OVERVIEW PANEL -->
+                    <section class="dash-view-panel buyer-panel active" id="buyer-overview">
+                        
+                        <!-- Page Header -->
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Welcome back, <span id="buyerHeadingName">Eleanor</span>! 👋</h1>
+                                <p>Track your saved luxury homes, booked viewings, and real-time agent offers.</p>
+                            </div>
+                            <div class="dash-header-actions">
+                                <button class="btn-dash-outline" onclick="switchBuyerTab('buyer-saved')">
+                                    <i class="far fa-heart"></i> Saved Homes
+                                </button>
+                                <a href="404.html" class="btn-dash-primary">
+                                    <i class="fas fa-search"></i> Browse Properties
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 4 Stat Metrics Grid -->
+                        <div class="dash-stats-grid">
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Saved Properties</span>
+                                    <span class="dash-stat-value">4</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-arrow-up"></i> +1 added yesterday</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap teal">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                            </div>
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Booked Tours</span>
+                                    <span class="dash-stat-value">2</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-clock"></i> Next in 2 days</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap orange">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                            </div>
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Active Offers</span>
+                                    <span class="dash-stat-value">2</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-file-contract"></i> 1 Counter received</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap indigo">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                            </div>
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Price Drop Alerts</span>
+                                    <span class="dash-stat-value">3</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-tag"></i> Up to -$50k</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap green">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2-Column Split: Upcoming Tour Alert + Recent Recommendation -->
+                        <div class="dash-grid-2col">
+                            
+                            <!-- Left: Recommended Curated Homes for Buyer -->
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <div>
+                                        <h2 class="dash-card-title"><i class="fas fa-sparkles"></i> Recommended For You</h2>
+                                        <span class="dash-card-subtitle">Matching your budget ($1M - $3M) and Miami location</span>
+                                    </div>
+                                    <a href="404.html" class="btn-dash-outline" style="font-size: 12px; padding: 6px 12px;">Explore All</a>
+                                </div>
+
+                                <div class="dash-props-grid">
+                                    <!-- Prop 1 -->
+                                    <div class="dash-prop-card">
+                                        <div class="dash-prop-thumb-wrap">
+                                            <img src="assets/images/prop-1.webp" alt="Modern Villa" class="dash-prop-thumb" loading="lazy">
+                                            <span class="dash-prop-badge-status for-sale">For Sale</span>
+                                            <button class="dash-prop-fav-btn" onclick="window.location.href='404.html'" title="Save Property">
+                                                <i class="fas fa-heart"></i>
+                                            </button>
+                                            <div class="dash-prop-price-tag">$1,850,000</div>
+                                        </div>
+                                        <div class="dash-prop-content">
+                                            <h3 class="dash-prop-title">Modern Villa with Private Pool</h3>
+                                            <div class="dash-prop-location">
+                                                <i class="fas fa-map-marker-alt" style="color: var(--dash-primary)"></i>
+                                                <span>Miami Beach, FL</span>
+                                            </div>
+                                            <div class="dash-prop-specs">
+                                                <div class="dash-prop-spec-item"><i class="fas fa-bed"></i> 4 Beds</div>
+                                                <div class="dash-prop-spec-item"><i class="fas fa-bath"></i> 3 Baths</div>
+                                                <div class="dash-prop-spec-item"><i class="fas fa-vector-square"></i> 3,450 sqft</div>
+                                            </div>
+                                            <div class="dash-prop-actions">
+                                                <button class="dash-prop-btn primary" onclick="window.location.href='404.html'">Schedule Tour</button>
+                                                <button class="dash-prop-btn" onclick="window.location.href='404.html'">Make Offer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Prop 2 -->
+                                    <div class="dash-prop-card">
+                                        <div class="dash-prop-thumb-wrap">
+                                            <img src="assets/images/prop-2.webp" alt="Downtown Penthouse" class="dash-prop-thumb" loading="lazy">
+                                            <span class="dash-prop-badge-status for-sale">For Sale</span>
+                                            <button class="dash-prop-fav-btn" onclick="window.location.href='404.html'" title="Save Property">
+                                                <i class="fas fa-heart"></i>
+                                            </button>
+                                            <div class="dash-prop-price-tag">$2,400,000</div>
+                                        </div>
+                                        <div class="dash-prop-content">
+                                            <h3 class="dash-prop-title">Luxury Downtown Penthouse</h3>
+                                            <div class="dash-prop-location">
+                                                <i class="fas fa-map-marker-alt" style="color: var(--dash-primary)"></i>
+                                                <span>Brickell Ave, Miami</span>
+                                            </div>
+                                            <div class="dash-prop-specs">
+                                                <div class="dash-prop-spec-item"><i class="fas fa-bed"></i> 3 Beds</div>
+                                                <div class="dash-prop-spec-item"><i class="fas fa-bath"></i> 3.5 Baths</div>
+                                                <div class="dash-prop-spec-item"><i class="fas fa-vector-square"></i> 2,800 sqft</div>
+                                            </div>
+                                            <div class="dash-prop-actions">
+                                                <button class="dash-prop-btn primary" onclick="window.location.href='404.html'">Schedule Tour</button>
+                                                <button class="dash-prop-btn" onclick="window.location.href='404.html'">Make Offer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Next Scheduled Tour Box -->
+                            <div class="dash-card" style="display: flex; flex-direction: column;">
+                                <div class="dash-card-header">
+                                    <h2 class="dash-card-title"><i class="fas fa-calendar-day"></i> Next Tour</h2>
+                                    <span class="dash-status-pill success">Confirmed</span>
+                                </div>
+
+                                <div style="margin-bottom: 16px;">
+                                    <img src="assets/images/property-1.webp" alt="Property Tour" style="width: 100%; height: 140px; border-radius: 8px; object-fit: cover;">
+                                </div>
+
+                                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--dash-text-dark);">Beverly Hills Modern Residence</h3>
+                                <p style="font-size: 12.5px; color: var(--dash-text-muted); margin-bottom: 12px;"><i class="fas fa-map-marker-alt"></i> 1420 Sunset Blvd, Beverly Hills</p>
+
+                                <div style="background: #f8fafc; border: 1px solid var(--dash-border); padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                                    <div style="font-size: 13px; font-weight: 700; color: var(--dash-primary); display: flex; align-items: center; gap: 8px;">
+                                        <i class="far fa-clock"></i> Tomorrow, 2:30 PM EST
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                                        <img src="assets/images/agent-profile-3.webp" alt="Nathan Fox" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                                        <div>
+                                            <div style="font-size: 12px; font-weight: 700;">Nathan Fox (Agent)</div>
+                                            <div style="font-size: 11px; color: var(--dash-text-muted);">(305) 555-0199</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; gap: 8px; margin-top: auto;">
+                                    <button class="btn-dash-primary" style="flex: 1; justify-content: center; font-size: 12px;" onclick="window.location.href='404.html'">
+                                        <i class="fas fa-cube"></i> 3D Tour
+                                    </button>
+                                    <button class="btn-dash-outline" style="flex: 1; justify-content: center; font-size: 12px;" onclick="window.location.href='404.html'">
+                                        Reschedule
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- 2. BUYER SAVED PROPERTIES PANEL -->
+                    <section class="dash-view-panel buyer-panel" id="buyer-saved">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Saved Properties (4)</h1>
+                                <p>Properties you have bookmarked for comparison, pricing alerts, and tour scheduling.</p>
+                            </div>
+                            <div class="dash-header-actions">
+                                <button class="btn-dash-outline" onclick="window.location.href='404.html'">
+                                    <i class="fas fa-file-pdf"></i> Compare Selected
+                                </button>
+                                <a href="404.html" class="btn-dash-primary">
+                                    <i class="fas fa-plus"></i> Find More
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Saved Properties Grid -->
+                        <div class="dash-props-grid">
+                            
+                            <!-- Card 1 -->
+                            <div class="dash-prop-card">
+                                <div class="dash-prop-thumb-wrap">
+                                    <img src="assets/images/prop-1.webp" alt="Villa" class="dash-prop-thumb" loading="lazy">
+                                    <span class="dash-prop-badge-status for-sale">For Sale</span>
+                                    <button class="dash-prop-fav-btn" onclick="window.location.href='404.html'" title="Remove from saved">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <div class="dash-prop-price-tag">$1,850,000</div>
+                                </div>
+                                <div class="dash-prop-content">
+                                    <h3 class="dash-prop-title">Modern Villa with Private Pool</h3>
+                                    <div class="dash-prop-location"><i class="fas fa-map-marker-alt"></i> Miami Beach, FL</div>
+                                    <div class="dash-prop-specs">
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bed"></i> 4 Beds</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bath"></i> 3 Baths</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-vector-square"></i> 3,450 sqft</div>
+                                    </div>
+                                    <div class="dash-prop-actions">
+                                        <button class="dash-prop-btn primary" onclick="window.location.href='404.html'">Schedule Tour</button>
+                                        <button class="dash-prop-btn" onclick="window.location.href='404.html'">Make Offer</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="dash-prop-card">
+                                <div class="dash-prop-thumb-wrap">
+                                    <img src="assets/images/prop-2.webp" alt="Penthouse" class="dash-prop-thumb" loading="lazy">
+                                    <span class="dash-prop-badge-status for-sale">For Sale</span>
+                                    <button class="dash-prop-fav-btn" onclick="window.location.href='404.html'" title="Remove from saved">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <div class="dash-prop-price-tag">$2,400,000</div>
+                                </div>
+                                <div class="dash-prop-content">
+                                    <h3 class="dash-prop-title">Luxury Downtown Penthouse</h3>
+                                    <div class="dash-prop-location"><i class="fas fa-map-marker-alt"></i> Brickell Ave, Miami</div>
+                                    <div class="dash-prop-specs">
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bed"></i> 3 Beds</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bath"></i> 3.5 Baths</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-vector-square"></i> 2,800 sqft</div>
+                                    </div>
+                                    <div class="dash-prop-actions">
+                                        <button class="dash-prop-btn primary" onclick="window.location.href='404.html'">Schedule Tour</button>
+                                        <button class="dash-prop-btn" onclick="window.location.href='404.html'">Make Offer</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="dash-prop-card">
+                                <div class="dash-prop-thumb-wrap">
+                                    <img src="assets/images/rent-sunset-residence.webp" alt="Waterfront Sunset Residence" class="dash-prop-thumb" loading="lazy">
+                                    <span class="dash-prop-badge-status for-rent">For Rent</span>
+                                    <button class="dash-prop-fav-btn" onclick="window.location.href='404.html'" title="Remove from saved">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <div class="dash-prop-price-tag">$8,500 / mo</div>
+                                </div>
+                                <div class="dash-prop-content">
+                                    <h3 class="dash-prop-title">Waterfront Sunset Residence</h3>
+                                    <div class="dash-prop-location"><i class="fas fa-map-marker-alt"></i> Fort Lauderdale, FL</div>
+                                    <div class="dash-prop-specs">
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bed"></i> 3 Beds</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bath"></i> 2 Baths</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-vector-square"></i> 2,100 sqft</div>
+                                    </div>
+                                    <div class="dash-prop-actions">
+                                        <button class="dash-prop-btn primary" onclick="window.location.href='404.html'">Schedule Tour</button>
+                                        <button class="dash-prop-btn" onclick="window.location.href='404.html'">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="dash-prop-card">
+                                <div class="dash-prop-thumb-wrap">
+                                    <img src="assets/images/property-2.webp" alt="Palm Beach Villa" class="dash-prop-thumb" loading="lazy">
+                                    <span class="dash-prop-badge-status for-sale">For Sale</span>
+                                    <button class="dash-prop-fav-btn" onclick="window.location.href='404.html'" title="Remove from saved">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <div class="dash-prop-price-tag">$3,150,000</div>
+                                </div>
+                                <div class="dash-prop-content">
+                                    <h3 class="dash-prop-title">Grand Oceanfront Villa & Garden</h3>
+                                    <div class="dash-prop-location"><i class="fas fa-map-marker-alt"></i> Palm Beach, FL</div>
+                                    <div class="dash-prop-specs">
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bed"></i> 4 Beds</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-bath"></i> 4 Baths</div>
+                                        <div class="dash-prop-spec-item"><i class="fas fa-vector-square"></i> 3,900 sqft</div>
+                                    </div>
+                                    <div class="dash-prop-actions">
+                                        <button class="dash-prop-btn primary" onclick="window.location.href='404.html'">Schedule Tour</button>
+                                        <button class="dash-prop-btn" onclick="window.location.href='404.html'">Make Offer</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- 3. BUYER BOOKED TOURS PANEL -->
+                    <section class="dash-view-panel buyer-panel" id="buyer-tours">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Booked Tours & Showings</h1>
+                                <p>Manage your upcoming in-person home walkthroughs and immersive 3D virtual tours.</p>
+                            </div>
+                            <div class="dash-header-actions">
+                                <button class="btn-dash-primary" onclick="window.location.href='404.html'">
+                                    <i class="fas fa-plus"></i> Request New Tour
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <h2 class="dash-card-title"><i class="fas fa-calendar-check"></i> Upcoming Appointments (2)</h2>
+                                <span class="dash-card-subtitle">Confirmed with verified listing agents</span>
+                            </div>
+
+                            <div class="dash-tour-list">
+                                
+                                <!-- Tour Item 1 -->
+                                <div class="dash-tour-item">
+                                    <div class="dash-tour-prop-meta">
+                                        <img src="assets/images/prop-1.webp" alt="Tour Prop" class="dash-tour-thumb">
+                                        <div class="dash-tour-details">
+                                            <h4>Modern Villa with Private Pool</h4>
+                                            <p><i class="fas fa-map-marker-alt"></i> 742 Evergreen Terr, Miami Beach, FL</p>
+                                            <span class="dash-tour-badge-time">
+                                                <i class="fas fa-calendar-day"></i> Tomorrow, Oct 24 &bull; 2:30 PM EST (In-Person)
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="dash-tour-agent-wrap">
+                                        <img src="assets/images/agent-profile-3.webp" alt="Agent" class="dash-tour-agent-avatar">
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 700;">Nathan Fox</div>
+                                            <div style="font-size: 11px; color: var(--dash-text-muted);">Assigned Listing Specialist</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dash-tour-actions">
+                                        <button class="btn-dash-primary" style="font-size: 12px; padding: 8px 14px;" onclick="window.location.href='404.html'">
+                                            <i class="fas fa-clock"></i> Reschedule
+                                        </button>
+                                        <button class="btn-dash-outline" style="font-size: 12px; padding: 8px 12px; color: #ef4444;" onclick="window.location.href='404.html'">
+                                            <i class="fas fa-times"></i> Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Tour Item 2 -->
+                                <div class="dash-tour-item">
+                                    <div class="dash-tour-prop-meta">
+                                        <img src="assets/images/prop-2.webp" alt="Tour Prop" class="dash-tour-thumb">
+                                        <div class="dash-tour-details">
+                                            <h4>Luxury Downtown Penthouse</h4>
+                                            <p><i class="fas fa-map-marker-alt"></i> 1100 Brickell Bay Dr, Miami, FL</p>
+                                            <span class="dash-tour-badge-time">
+                                                <i class="fas fa-video"></i> Friday, Oct 26 &bull; 11:00 AM EST (3D Live Virtual Tour)
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="dash-tour-agent-wrap">
+                                        <img src="assets/images/agent-profile-2.webp" alt="Agent" class="dash-tour-agent-avatar">
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 700;">Melissa Jane</div>
+                                            <div style="font-size: 11px; color: var(--dash-text-muted);">Senior Luxury Consultant</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dash-tour-actions">
+                                        <button class="btn-dash-primary" style="font-size: 12px; padding: 8px 14px; background: #6366f1;" onclick="window.location.href='404.html'">
+                                            <i class="fas fa-play-circle"></i> Launch 3D Tour
+                                        </button>
+                                        <button class="btn-dash-outline" style="font-size: 12px; padding: 8px 12px; color: #ef4444;" onclick="window.location.href='404.html'">
+                                            <i class="fas fa-times"></i> Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- 4. BUYER OFFERS & INQUIRIES PANEL -->
+                    <section class="dash-view-panel buyer-panel" id="buyer-offers">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Purchase Offers & Direct Chats</h1>
+                                <p>Track negotiation statuses, legal paperwork drafts, and communicate with listing agents.</p>
+                            </div>
+                        </div>
+
+                        <div class="dash-grid-2col">
+                            
+                            <!-- Left: Active Offers Table -->
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <h2 class="dash-card-title"><i class="fas fa-file-signature"></i> Offer Tracker</h2>
+                                    <span class="dash-card-subtitle">2 active submissions</span>
+                                </div>
+
+                                <div class="dash-offers-table-wrap">
+                                    <table class="dash-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Property</th>
+                                                <th>Offer Amount</th>
+                                                <th>Listing Price</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <strong>Modern Villa</strong>
+                                                    <div style="font-size: 11px; color: var(--dash-text-muted);">Miami Beach</div>
+                                                </td>
+                                                <td><strong>$1,780,000</strong></td>
+                                                <td>$1,850,000</td>
+                                                <td><span class="dash-status-pill warning"><i class="fas fa-clock"></i> Countered ($1.8M)</span></td>
+                                                <td>
+                                                    <button class="btn-dash-primary" style="font-size: 11px; padding: 4px 8px;" onclick="window.location.href='404.html'">Accept</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Downtown Penthouse</strong>
+                                                    <div style="font-size: 11px; color: var(--dash-text-muted);">Brickell Ave</div>
+                                                </td>
+                                                <td><strong>$2,350,000</strong></td>
+                                                <td>$2,400,000</td>
+                                                <td><span class="dash-status-pill info"><i class="fas fa-search"></i> Under Review</span></td>
+                                                <td>
+                                                    <button class="btn-dash-outline" style="font-size: 11px; padding: 4px 8px;" onclick="window.location.href='404.html'">Revise</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Right: Live Chat Box with Agent -->
+                            <div class="dash-chat-box">
+                                <div class="dash-chat-header">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="assets/images/agent-profile-3.webp" alt="Agent" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover;">
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 700;">Nathan Fox</div>
+                                            <div style="font-size: 11px; color: var(--dash-success);"><i class="fas fa-circle" style="font-size: 8px;"></i> Online now</div>
+                                        </div>
+                                    </div>
+                                    <span style="font-size: 11px; color: var(--dash-text-muted);">Villa Discussion</span>
+                                </div>
+
+                                <div class="dash-chat-messages" id="buyerChatMessages">
+                                    <div class="dash-message-bubble incoming">
+                                        Hi Eleanor! The seller has reviewed your offer for the Miami Beach Villa. They are willing to accept \$1.80M if closing is within 30 days.
+                                        <div style="font-size: 10px; opacity: 0.7; margin-top: 4px;">10:45 AM</div>
+                                    </div>
+                                    <div class="dash-message-bubble outgoing">
+                                        That sounds reasonable! Can we include the outdoor patio furnishings in this price?
+                                        <div style="font-size: 10px; opacity: 0.8; margin-top: 4px; text-align: right;">10:48 AM</div>
+                                    </div>
+                                    <div class="dash-message-bubble incoming">
+                                        I spoke with the owner and yes, all patio loungers and outdoor barbecue setup are included!
+                                        <div style="font-size: 10px; opacity: 0.7; margin-top: 4px;">10:52 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="dash-chat-input-row">
+                                    <input type="text" id="buyerChatInput" class="dash-chat-input" placeholder="Type your reply to agent..." onkeydown="if(event.key === 'Enter') sendInquiryReply('buyerChatInput', 'buyerChatMessages')">
+                                    <button class="btn-dash-primary" style="padding: 9px 14px;" onclick="sendInquiryReply('buyerChatInput', 'buyerChatMessages')">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- 5. BUYER PROFILE & PREFERENCES PANEL -->
+                    <section class="dash-view-panel buyer-panel" id="buyer-profile">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Profile & Search Preferences</h1>
+                                <p>Customize your budget, desired amenities, and calculate estimated monthly mortgage payments.</p>
+                            </div>
+                        </div>
+
+                        <div class="dash-grid-even">
+                            
+                            <!-- Left: Profile & Search Criteria -->
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <h2 class="dash-card-title"><i class="fas fa-user-cog"></i> Buyer Criteria</h2>
+                                </div>
+
+                                <form onsubmit="savePreferences(event)">
+                                    <div class="dash-form-grid" style="margin-bottom: 16px;">
+                                        <div class="dash-form-group">
+                                            <label class="dash-form-label">Full Name</label>
+                                            <input type="text" id="buyerProfileNameInput" class="dash-form-control" value="Eleanor Vance" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" onkeypress="return /[a-zA-Z\s]/.test(event.key)">
+                                        </div>
+                                        <div class="dash-form-group">
+                                            <label class="dash-form-label">Email Address</label>
+                                            <input type="email" id="buyerProfileEmailInput" class="dash-form-control" value="eleanor.vance@example.com" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="dash-form-grid" style="margin-bottom: 16px;">
+                                        <div class="dash-form-group">
+                                            <label class="dash-form-label">Target Location</label>
+                                            <input type="text" class="dash-form-control" value="Miami, FL & Palm Beach">
+                                        </div>
+                                        <div class="dash-form-group">
+                                            <label class="dash-form-label">Property Type</label>
+                                            <select class="dash-form-control">
+                                                <option selected>Luxury Villa & Penthouse</option>
+                                                <option>Modern Apartments</option>
+                                                <option>Commercial Property</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="dash-form-group" style="margin-bottom: 20px;">
+                                        <label class="dash-form-label">Must-Have Amenities</label>
+                                        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px;">
+                                            <label style="font-size: 13px; display: flex; align-items: center; gap: 6px;"><input type="checkbox" checked> Swimming Pool</label>
+                                            <label style="font-size: 13px; display: flex; align-items: center; gap: 6px;"><input type="checkbox" checked> Ocean View</label>
+                                            <label style="font-size: 13px; display: flex; align-items: center; gap: 6px;"><input type="checkbox" checked> 2+ Garage</label>
+                                            <label style="font-size: 13px; display: flex; align-items: center; gap: 6px;"><input type="checkbox"> Smart Home</label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn-dash-primary">
+                                        <i class="fas fa-save"></i> Save Preferences
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Right: Live Mortgage Pre-qualification Calculator -->
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <h2 class="dash-card-title"><i class="fas fa-calculator"></i> Mortgage Payment Estimator</h2>
+                                </div>
+
+                                <div class="dash-form-grid" style="margin-bottom: 16px;">
+                                    <div class="dash-form-group">
+                                        <label class="dash-form-label">Home Purchase Price ($)</label>
+                                        <input type="number" id="calcHomePrice" class="dash-form-control" value="1850000" step="10000">
+                                    </div>
+                                    <div class="dash-form-group">
+                                        <label class="dash-form-label">Down Payment (%)</label>
+                                        <input type="number" id="calcDownPayment" class="dash-form-control" value="20" min="5" max="90">
+                                    </div>
+                                </div>
+
+                                <div class="dash-form-grid" style="margin-bottom: 20px;">
+                                    <div class="dash-form-group">
+                                        <label class="dash-form-label">Interest Rate (%)</label>
+                                        <input type="number" id="calcInterest" class="dash-form-control" value="6.5" step="0.1">
+                                    </div>
+                                    <div class="dash-form-group">
+                                        <label class="dash-form-label">Loan Term</label>
+                                        <select id="calcTerm" class="dash-form-control">
+                                            <option value="30" selected>30 Years Fixed</option>
+                                            <option value="15">15 Years Fixed</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Output Box -->
+                                <div class="dash-calc-summary-card">
+                                    <span class="dash-calc-est-label">Estimated Monthly Payment</span>
+                                    <span class="dash-calc-est-value" id="calcEstMonthly">$9,355 / mo</span>
+                                    <span style="font-size: 11px; color: #94a3b8;">Includes Principal, Interest & standard rates</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- ==================================================================
+                     ROLE 2: AGENT / SELLER DASHBOARD PANELS (5 OPTIONS)
+                     ================================================================== -->
+                <div class="agent-panel-group" style="display: none;">
+
+                    <!-- 1. AGENT OVERVIEW & ANALYTICS PANEL -->
+                    <section class="dash-view-panel agent-panel active" id="agent-overview">
+                        
+                        <!-- Page Header -->
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Agent Hub &mdash; <span id="agentHeadingName">Alexander Wright</span> 🏢</h1>
+                                <p>RealHomes Luxury Realty &bull; License #FL-RE-987412 &bull; 98.6% Client Satisfaction</p>
+                            </div>
+                            <div class="dash-header-actions">
+                                <button class="btn-dash-outline" onclick="window.location.href='404.html'">
+                                    <i class="fas fa-file-export"></i> Export Report
+                                </button>
+                                <button class="btn-dash-primary btn-dash-agent" onclick="openAddListingModal()">
+                                    <i class="fas fa-plus"></i> Add New Listing
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 4 Stat Metrics Grid -->
+                        <div class="dash-stats-grid">
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Total Volume Closed</span>
+                                    <span class="dash-stat-value">$4.25M</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-arrow-up"></i> +18% this quarter</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap indigo">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Active Listings</span>
+                                    <span class="dash-stat-value">6</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-building"></i> 4 Sale / 2 Rent</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap teal">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                            </div>
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Monthly Lead Inquiries</span>
+                                    <span class="dash-stat-value">48</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-user-plus"></i> +12 new leads</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap green">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="dash-stat-card">
+                                <div class="dash-stat-info">
+                                    <span class="dash-stat-label">Avg. Days on Market</span>
+                                    <span class="dash-stat-value">16d</span>
+                                    <span class="dash-stat-change up"><i class="fas fa-bolt"></i> 40% faster than avg</span>
+                                </div>
+                                <div class="dash-stat-icon-wrap orange">
+                                    <i class="fas fa-stopwatch"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2-Column Split: Performance Bar Chart + Urgent Leads -->
+                        <div class="dash-grid-2col">
+                            
+                            <!-- Left: Lead Acquisition Bar Chart -->
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <div>
+                                        <h2 class="dash-card-title"><i class="fas fa-chart-bar"></i> Inquiry & Lead Volume (2026)</h2>
+                                        <span class="dash-card-subtitle">Monthly buyer inquiries per property type</span>
+                                    </div>
+                                    <span class="dash-status-pill success"><i class="fas fa-arrow-up"></i> +24% YoY</span>
+                                </div>
+
+                                <div class="dash-bar-chart">
+                                    <div class="dash-bar-col">
+                                        <div class="dash-bar-fill" style="height: 45%;" data-val="24"></div>
+                                        <span class="dash-bar-month">May</span>
+                                    </div>
+                                    <div class="dash-bar-col">
+                                        <div class="dash-bar-fill" style="height: 60%;" data-val="32"></div>
+                                        <span class="dash-bar-month">Jun</span>
+                                    </div>
+                                    <div class="dash-bar-col">
+                                        <div class="dash-bar-fill" style="height: 75%;" data-val="39"></div>
+                                        <span class="dash-bar-month">Jul</span>
+                                    </div>
+                                    <div class="dash-bar-col">
+                                        <div class="dash-bar-fill" style="height: 70%;" data-val="36"></div>
+                                        <span class="dash-bar-month">Aug</span>
+                                    </div>
+                                    <div class="dash-bar-col">
+                                        <div class="dash-bar-fill" style="height: 95%;" data-val="48"></div>
+                                        <span class="dash-bar-month">Sep</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Urgent Tasks & Inquiries -->
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <h2 class="dash-card-title"><i class="fas fa-exclamation-circle"></i> Priority Tasks</h2>
+                                    <span class="dash-nav-badge" style="background: #ef4444; color: white;">3 Urgent</span>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <div style="padding: 12px; border-radius: 8px; background: #fffbeb; border: 1px solid #fef3c7;">
+                                        <div style="font-size: 13px; font-weight: 700; color: #92400e;">New Offer Submitted ($1.8M)</div>
+                                        <div style="font-size: 12px; color: #b45309;">From Eleanor Vance for Modern Villa. Response needed.</div>
+                                        <button class="btn-dash-primary btn-dash-agent" style="font-size: 11px; padding: 4px 10px; margin-top: 8px;" onclick="switchAgentTab('agent-leads')">Review Offer</button>
+                                    </div>
+
+                                    <div style="padding: 12px; border-radius: 8px; background: #f0fdf4; border: 1px solid #dcfce7;">
+                                        <div style="font-size: 13px; font-weight: 700; color: #166534;">Showing Request (Brickell Penthouse)</div>
+                                        <div style="font-size: 12px; color: #15803d;">Client: Dr. Robert King &bull; Tomorrow @ 4:00 PM</div>
+                                        <button class="btn-dash-outline" style="font-size: 11px; padding: 4px 10px; margin-top: 8px;" onclick="switchAgentTab('agent-showings')">Confirm Visit</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- 2. AGENT MY LISTINGS PANEL -->
+                    <section class="dash-view-panel agent-panel" id="agent-listings">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>My Property Listings</h1>
+                                <p>Manage pricing, photos, virtual tours, and status of your active portfolio.</p>
+                            </div>
+                            <div class="dash-header-actions">
+                                <button class="btn-dash-primary btn-dash-agent" onclick="openAddListingModal()">
+                                    <i class="fas fa-plus-circle"></i> Add New Property
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Listing Filters -->
+                        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+                            <button class="btn-dash-primary listing-filter-btn" onclick="filterAgentListings('all', this)">All Listings (6)</button>
+                            <button class="btn-dash-outline listing-filter-btn" onclick="filterAgentListings('sale', this)">For Sale (4)</button>
+                            <button class="btn-dash-outline listing-filter-btn" onclick="filterAgentListings('rent', this)">For Rent (2)</button>
+                            <button class="btn-dash-outline listing-filter-btn" onclick="filterAgentListings('pending', this)">Pending (1)</button>
+                        </div>
+
+                        <!-- Dynamic Agent Listings Grid -->
+                        <div class="dash-props-grid" id="agentListingsGrid">
+                            <!-- Populated dynamically by dashboard.js using verified <100KB webp images -->
+                        </div>
+
+                    </section>
+
+                    <!-- 3. AGENT LEADS & INQUIRIES PANEL -->
+                    <section class="dash-view-panel agent-panel" id="agent-leads">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Buyer Lead Pipeline</h1>
+                                <p>Track prospective buyers and tenant inquiries through your sales funnel.</p>
+                            </div>
+                        </div>
+
+                        <div class="dash-pipeline-grid">
+                            
+                            <!-- Column 1: New Inquiries -->
+                            <div class="dash-pipeline-col">
+                                <div class="dash-pipeline-col-header">
+                                    <span>New Inquiries (2)</span>
+                                    <span class="dash-status-pill info">Fresh</span>
+                                </div>
+                                
+                                <div class="dash-lead-card" onclick="window.location.href='404.html'" style="cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <strong>Sarah Jenkins</strong>
+                                        <span style="font-size: 11px; color: var(--dash-text-muted);">20m ago</span>
+                                    </div>
+                                    <div style="font-size: 12px; color: var(--dash-primary); font-weight: 600;">Modern Villa with Pool</div>
+                                    <p style="font-size: 12px; color: var(--dash-text-muted);">"Is there any HOA restriction for short-term rental?"</p>
+                                    <div style="font-size: 11px; font-weight: 700;">Budget: $1.9M &bull; Pre-Approved</div>
+                                </div>
+
+                                <div class="dash-lead-card" onclick="window.location.href='404.html'" style="cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <strong>Michael Chang</strong>
+                                        <span style="font-size: 11px; color: var(--dash-text-muted);">2h ago</span>
+                                    </div>
+                                    <div style="font-size: 12px; color: var(--dash-primary); font-weight: 600;">Downtown Penthouse</div>
+                                    <p style="font-size: 12px; color: var(--dash-text-muted);">"Would like a video walkthrough this Saturday."</p>
+                                    <div style="font-size: 11px; font-weight: 700;">Budget: $2.5M &bull; Cash Buyer</div>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Showing Scheduled -->
+                            <div class="dash-pipeline-col">
+                                <div class="dash-pipeline-col-header">
+                                    <span>Tour Scheduled (2)</span>
+                                    <span class="dash-status-pill warning">Active</span>
+                                </div>
+
+                                <div class="dash-lead-card" onclick="window.location.href='404.html'" style="cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <strong>Eleanor Vance</strong>
+                                        <span class="dash-status-pill success" style="font-size: 10px;">Tomorrow</span>
+                                    </div>
+                                    <div style="font-size: 12px; color: var(--dash-primary); font-weight: 600;">Modern Villa ($1.85M)</div>
+                                    <p style="font-size: 12px; color: var(--dash-text-muted);">Confirmed for in-person tour at 2:30 PM EST.</p>
+                                </div>
+
+                                <div class="dash-lead-card" onclick="window.location.href='404.html'" style="cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <strong>Dr. Robert King</strong>
+                                        <span class="dash-status-pill success" style="font-size: 10px;">Oct 26</span>
+                                    </div>
+                                    <div style="font-size: 12px; color: var(--dash-primary); font-weight: 600;">Oceanfront Villa ($3.15M)</div>
+                                    <p style="font-size: 12px; color: var(--dash-text-muted);">Client requested floor plan blueprints.</p>
+                                </div>
+                            </div>
+
+                            <!-- Column 3: Negotiation -->
+                            <div class="dash-pipeline-col">
+                                <div class="dash-pipeline-col-header">
+                                    <span>Under Offer (1)</span>
+                                    <span class="dash-status-pill success">Hot</span>
+                                </div>
+
+                                <div class="dash-lead-card" onclick="window.location.href='404.html'" style="border-left: 4px solid var(--dash-success); cursor: pointer;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <strong>David Sterling</strong>
+                                        <span style="font-size: 11px; font-weight: 700; color: var(--dash-success);">$4.1M</span>
+                                    </div>
+                                    <div style="font-size: 12px; color: var(--dash-primary); font-weight: 600;">Beverly Hills Estate</div>
+                                    <p style="font-size: 12px; color: var(--dash-text-muted);">Contract signed by buyer; escrow deposit verified.</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- 4. AGENT SCHEDULED SHOWINGS PANEL -->
+                    <section class="dash-view-panel agent-panel" id="agent-showings">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Showing & Open House Calendar</h1>
+                                <p>Manage appointments, lockbox access codes, and collect prospective buyer feedback.</p>
+                            </div>
+                        </div>
+
+                        <div class="dash-card">
+                            <div class="dash-card-header">
+                                <h2 class="dash-card-title"><i class="fas fa-calendar-alt"></i> This Week's Showings (3)</h2>
+                            </div>
+
+                            <div class="dash-tour-list">
+                                <div class="dash-tour-item">
+                                    <div class="dash-tour-prop-meta">
+                                        <img src="assets/images/prop-1.webp" alt="Showing" class="dash-tour-thumb">
+                                        <div class="dash-tour-details">
+                                            <h4>Modern Villa with Pool &bull; Private Walkthrough</h4>
+                                            <p><i class="fas fa-user"></i> Buyer: <strong>Eleanor Vance</strong> ((305) 555-0144)</p>
+                                            <span class="dash-tour-badge-time"><i class="far fa-clock"></i> Tomorrow @ 2:30 PM EST</span>
+                                        </div>
+                                    </div>
+                                    <div class="dash-tour-actions">
+                                        <button class="btn-dash-primary btn-dash-agent" style="font-size: 12px;" onclick="window.location.href='404.html'">
+                                            <i class="fas fa-key"></i> Lockbox Code
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="dash-tour-item">
+                                    <div class="dash-tour-prop-meta">
+                                        <img src="assets/images/property-2.webp" alt="Showing" class="dash-tour-thumb">
+                                        <div class="dash-tour-details">
+                                            <h4>Grand Oceanfront Villa &bull; In-Person Viewing</h4>
+                                            <p><i class="fas fa-user"></i> Buyer: <strong>Dr. Robert King</strong> ((561) 555-0182)</p>
+                                            <span class="dash-tour-badge-time"><i class="far fa-clock"></i> Friday, Oct 26 @ 4:00 PM EST</span>
+                                        </div>
+                                    </div>
+                                    <div class="dash-tour-actions">
+                                        <button class="btn-dash-primary btn-dash-agent" style="font-size: 12px;" onclick="window.location.href='404.html'">
+                                            <i class="fas fa-check"></i> Confirmed
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- 5. AGENT PROFILE & AGENCY PANEL -->
+                    <section class="dash-view-panel agent-panel" id="agent-profile">
+                        
+                        <div class="dash-page-header">
+                            <div class="dash-page-title-wrap">
+                                <h1>Agent Profile & Agency Credentials</h1>
+                                <p>Manage license credentials, commission payout preferences, and marketing bio.</p>
+                            </div>
+                        </div>
+
+                        <div class="dash-grid-even">
+                            
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <h2 class="dash-card-title"><i class="fas fa-id-card"></i> Licensing & Brokerage</h2>
+                                    <span class="dash-status-pill success"><i class="fas fa-check-circle"></i> Verified Broker</span>
+                                </div>
+
+                                <form onsubmit="savePreferences(event)">
+                                    <div class="dash-form-grid" style="margin-bottom: 16px;">
+                                        <div class="dash-form-group">
+                                            <label class="dash-form-label">Full Name</label>
+                                            <input type="text" id="agentProfileNameInput" class="dash-form-control" value="Alexander Wright" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" onkeypress="return /[a-zA-Z\s]/.test(event.key)">
+                                        </div>
+                                        <div class="dash-form-group">
+                                            <label class="dash-form-label">License Number</label>
+                                            <input type="text" class="dash-form-control" value="FL-RE-987412" readonly style="background: #f1f5f9;">
+                                        </div>
+                                    </div>
+
+                                    <div class="dash-form-group" style="margin-bottom: 16px;">
+                                        <label class="dash-form-label">Brokerage Name</label>
+                                        <input type="text" class="dash-form-control" value="Real Homes Luxury Realty LLC">
+                                    </div>
+
+                                    <div class="dash-form-group" style="margin-bottom: 16px;">
+                                        <label class="dash-form-label">Professional Bio</label>
+                                        <textarea class="dash-form-control" rows="3">Specializing in South Florida luxury waterfront villas, high-rise penthouses, and private estates for over 12 years.</textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn-dash-primary btn-dash-agent">
+                                        <i class="fas fa-save"></i> Update Profile
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div class="dash-card">
+                                <div class="dash-card-header">
+                                    <h2 class="dash-card-title"><i class="fas fa-star"></i> Client Testimonials (4.9/5)</h2>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 14px;">
+                                    <div style="background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid var(--dash-border);">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                            <strong style="font-size: 13px;">James & Sarah Miller</strong>
+                                            <span style="color: var(--star-gold); font-size: 12px;">★★★★★</span>
+                                        </div>
+                                        <p style="font-size: 12px; color: var(--dash-text-muted);">"Alexander sold our Brickell condo in under two weeks at full asking price! Outstanding service."</p>
+                                    </div>
+
+                                    <div style="background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid var(--dash-border);">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                            <strong style="font-size: 13px;">Victoria Sterling</strong>
+                                            <span style="color: var(--star-gold); font-size: 12px;">★★★★★</span>
+                                        </div>
+                                        <p style="font-size: 12px; color: var(--dash-text-muted);">"Superb negotiation skills and prompt 3D walkthrough setup. Highest recommendation."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ==========================================================================
+         MODAL: ADD NEW LISTING (FOR AGENT ROLE)
+         ========================================================================== -->
+    <div class="dash-modal-backdrop" id="addListingModal">
+        <div class="dash-modal-card">
+            <div class="dash-modal-header">
+                <h3 class="dash-modal-title"><i class="fas fa-plus-circle" style="color: var(--dash-agent-accent)"></i> Publish New Property Listing</h3>
+                <button class="dash-modal-close" onclick="closeAddListingModal()">&times;</button>
+            </div>
+            <form onsubmit="handleAddListingSubmit(event)">
+                <div class="dash-modal-body">
+                    <div class="dash-form-group" style="margin-bottom: 14px;">
+                        <label class="dash-form-label">Property Title *</label>
+                        <input type="text" id="newListingTitle" class="dash-form-control" placeholder="e.g. Modern Sunset Villa with Infinity Pool" required>
+                    </div>
+
+                    <div class="dash-form-grid" style="margin-bottom: 14px;">
+                        <div class="dash-form-group">
+                            <label class="dash-form-label">Listing Price ($) *</label>
+                            <input type="text" id="newListingPrice" class="dash-form-control" placeholder="e.g. $2,150,000" required>
+                        </div>
+                        <div class="dash-form-group">
+                            <label class="dash-form-label">Listing Type *</label>
+                            <select id="newListingType" class="dash-form-control">
+                                <option value="for-sale">For Sale</option>
+                                <option value="for-rent">For Rent</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="dash-form-group" style="margin-bottom: 14px;">
+                        <label class="dash-form-label">Location Address *</label>
+                        <input type="text" id="newListingLocation" class="dash-form-control" placeholder="e.g. Key Biscayne, FL" required>
+                    </div>
+
+                    <div class="dash-form-grid" style="margin-bottom: 14px;">
+                        <div class="dash-form-group">
+                            <label class="dash-form-label">Bedrooms</label>
+                            <input type="number" id="newListingBeds" class="dash-form-control" value="4" min="1">
+                        </div>
+                        <div class="dash-form-group">
+                            <label class="dash-form-label">Bathrooms</label>
+                            <input type="number" id="newListingBaths" class="dash-form-control" value="3" min="1" step="0.5">
+                        </div>
+                        <div class="dash-form-group">
+                            <label class="dash-form-label">Square Feet (sqft)</label>
+                            <input type="text" id="newListingSqft" class="dash-form-control" placeholder="e.g. 3,200">
+                        </div>
+                    </div>
+                </div>
+                <div class="dash-modal-footer">
+                    <button type="button" class="btn-dash-outline" onclick="closeAddListingModal()">Cancel</button>
+                    <button type="submit" class="btn-dash-primary btn-dash-agent">
+                        <i class="fas fa-check"></i> Publish Property
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Logic Script -->
+    <script src="assets/js/dashboard.js"></script>
+
+</body>
+</html>

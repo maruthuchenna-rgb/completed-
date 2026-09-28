@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Real Homes</title>
+    
+    <!-- Meta SEO & Favicon -->
+    <meta name="description" content="Explore the latest articles, market trends, luxury living tips, and property news on Real Homes Blog.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Project Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <!-- HERO BANNER SECTION WITH AERIAL WATERWAY BACKGROUND -->
+        <header class="blog-hero-section">
+            <div class="blog-hero-overlay"></div>
+
+            <!-- Top Header Bar -->
+            <div class="site-header site-header-re">
+                <div class="header-container">
+                    
+                    <!-- Brand Logo -->
+                    <a href="index.html" class="brand-logo">
+                        <img src="stackly1.webp" alt="Stackly Logo" style="height: 45px; width: auto;">
+                    </a>
+
+                    <!-- Navigation Menu with Blog Highlighted (Orange) -->
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-list">
+                            <li><a href="index.html" class="nav-link">Home</a></li>
+                            <li><a href="real-estate.html" class="nav-link">Real Estate</a></li>
+                            <li><a href="property.html" class="nav-link">Property</a></li>
+                            <li><a href="elementor.html" class="nav-link">Elementor</a></li>
+                            <li><a href="blog.html" class="nav-link active-tab-orange">Blog</a></li>
+                            <li><a href="contact.html" class="nav-link">Contact</a></li>
+                          
+                        </ul>
+                    </nav>
+
+                    <!-- Header Right Elements -->
+                    <div class="header-right">
+                        <a href="login.html" class="btn-header-login">Login</a>
+
+                        <!-- Mobile Hamburger Toggle -->
+                        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Page Title -->
+            <div class="blog-hero-content">
+                <div class="section-container">
+                    <h1 class="blog-page-title">Blog</h1>
+                </div>
+            </div>
+        </header>
+
+        <!-- FLOATING SEARCH BAR OVER HERO -->
+        <div class="blog-search-bar-wrapper">
+            <div class="blog-search-bar">
+                
+                <!-- Location Segment -->
+                <div class="blog-search-segment" id="blogLocSegment" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="re-segment-label">Location</span>
+                    <div class="re-segment-value-row">
+                        <span class="selected-text">All Locations</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <ul class="search-dropdown-options" role="listbox">
+                        <li class="search-option-item selected" data-value="all"><i class="fas fa-globe"></i> All Locations</li>
+                        <li class="search-option-item" data-value="Miami"><i class="fas fa-umbrella-beach"></i> Miami Beach, FL</li>
+                        <li class="search-option-item" data-value="Coral Gables"><i class="fas fa-city"></i> Coral Gables, FL</li>
+                        <li class="search-option-item" data-value="Hollywood"><i class="fas fa-film"></i> Hollywood, FL</li>
+                        <li class="search-option-item" data-value="Kendall"><i class="fas fa-tree"></i> Kendall, FL</li>
+                        <li class="search-option-item" data-value="Palmetto Bay"><i class="fas fa-landmark"></i> Palmetto Bay, FL</li>
+                    </ul>
+                </div>
+
+                <!-- Property Status Segment -->
+                <div class="blog-search-segment" id="blogStatusSegment" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="re-segment-label">Property Status</span>
+                    <div class="re-segment-value-row">
+                        <span class="selected-text">Any</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <ul class="search-dropdown-options" role="listbox">
+                        <li class="search-option-item selected" data-value="all"><i class="fas fa-asterisk"></i> Any Status</li>
+                        <li class="search-option-item" data-value="For Sale"><i class="fas fa-home"></i> For Sale</li>
+                        <li class="search-option-item" data-value="For Rent"><i class="fas fa-key"></i> For Rent</li>
+                    </ul>
+                </div>
+
+                <!-- Property Type Segment -->
+                <div class="blog-search-segment" id="blogTypeSegment" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="re-segment-label">Property Type</span>
+                    <div class="re-segment-value-row">
+                        <span class="selected-text">All Types</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <ul class="search-dropdown-options" role="listbox">
+                        <li class="search-option-item selected" data-value="all"><i class="fas fa-layer-group"></i> All Types</li>
+                        <li class="search-option-item" data-value="Apartment"><i class="fas fa-building"></i> Modern Apartment</li>
+                        <li class="search-option-item" data-value="Condo"><i class="fas fa-city"></i> Luxury Condo</li>
+                        <li class="search-option-item" data-value="Single Family"><i class="fas fa-house-user"></i> Single Family</li>
+                        <li class="search-option-item" data-value="Villa"><i class="fas fa-hotel"></i> Exclusive Villa</li>
+                        <li class="search-option-item" data-value="Office"><i class="fas fa-briefcase"></i> Office & Commercial</li>
+                    </ul>
+                </div>
+
+                <!-- Search Actions Group -->
+                <div class="blog-search-actions">
+                    <button type="button" class="btn-blog-advance-filter" id="btnAdvSearchToggle" title="Advanced Search Filter" aria-label="Filter" aria-expanded="false">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button type="button" class="btn-blog-search-submit">
+                        <i class="fas fa-search"></i>
+                        <span>Search</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Expandable Advance Search Drawer -->
+            <div class="advance-search-drawer" id="advanceSearchDrawer">
+                <div class="drawer-grid">
+                    <div class="drawer-field">
+                        <label for="minPrice">Min Price ($)</label>
+                        <select id="minPrice" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="250000">$250,000</option>
+                            <option value="500000">$500,000</option>
+                            <option value="1000000">$1,000,000</option>
+                            <option value="2500000">$2,500,000</option>
+                        </select>
+                    </div>
+                    <div class="drawer-field">
+                        <label for="maxPrice">Max Price ($)</label>
+                        <select id="maxPrice" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="1000000">$1,000,000</option>
+                            <option value="2500000">$2,500,000</option>
+                            <option value="5000000">$5,000,000</option>
+                            <option value="10000000">$10,000,000+</option>
+                        </select>
+                    </div>
+                    <div class="drawer-field">
+                        <label for="bedrooms">Bedrooms</label>
+                        <select id="bedrooms" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                    <div class="drawer-field">
+                        <label for="bathrooms">Bathrooms</label>
+                        <select id="bathrooms" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Amenities Checkboxes -->
+                <div class="drawer-features">
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Air Conditioning
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Swimming Pool
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox"> Central Heating
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Garden
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Garage
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox"> Security System
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN BLOG LAYOUT (2 COLUMNS: POSTS + SIDEBAR) -->
+        <main class="blog-layout-section">
+            <div class="section-container">
+                <div class="blog-main-grid">
+                    
+                    <!-- LEFT COLUMN: BLOG POSTS LIST -->
+                    <div class="blog-posts-column">
+                        
+                        <!-- Blog Post 1: Gallery Post Format -->
+                        <article class="blog-post-card">
+                            <div class="blog-post-media-wrap">
+                                <img src="assets/images/blog-post-brick-window.webp" alt="Gallery Post Format" loading="lazy">
+                                <div class="blog-post-teal-banner">
+                                    <h2 class="blog-post-banner-title">
+                                        <a href="404.html">Gallery Post Format</a>
+                                    </h2>
+                                    <div class="blog-post-banner-meta">
+                                        By <a href="404.html">John Doe</a> Posted in <a href="404.html">Luxury</a> On July 15, 2015
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-post-body">
+                                <p class="blog-post-excerpt">
+                                    Competently harness enterprise verbals via revolutionary e-tailers. Monotonectally recapitulate one-to-one relationships whereas ubiquitous core competencies. Proactively actualize proactive methodologies after process-centric mindshare.
+                                </p>
+                                <a href="404.html" class="btn-blog-readmore">Read More</a>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 2: Image Post Format -->
+                        <article class="blog-post-card">
+                            <div class="blog-post-media-wrap">
+                                <img src="assets/images/blog-post-living-interior.webp" alt="Image Post Format" loading="lazy">
+                                <div class="blog-post-teal-banner">
+                                    <h2 class="blog-post-banner-title">
+                                        <a href="404.html">Image Post Format</a>
+                                    </h2>
+                                    <div class="blog-post-banner-meta">
+                                        By <a href="404.html">John Doe</a> Posted in <a href="404.html">Luxury</a> On July 15, 2015
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-post-body">
+                                <p class="blog-post-excerpt">
+                                    Enthusiastically disintermediate progressive innovation before high-payoff metrics. Intrinsically generate sticky services without B2B e-services. Competently revolutionize parallel applications with plug-and-play meta-services. Competently leverage ether's global outsourcing for superior deliverables.
+                                </p>
+                                <a href="404.html" class="btn-blog-readmore">Read More</a>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 3: Video Post Format -->
+                        <article class="blog-post-card">
+                            <div class="blog-post-media-wrap">
+                                <img src="assets/images/blog-post-minimal-interior.webp" alt="Video Post Format" loading="lazy">
+                                <div class="blog-post-teal-banner">
+                                    <h2 class="blog-post-banner-title">
+                                        <a href="#">Video Post Format</a>
+                                    </h2>
+                                    <div class="blog-post-banner-meta">
+                                        By <a href="404.html">John Doe</a> Posted in <a href="404.html">Market Trends</a> On July 13, 2015
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-post-body">
+                                <p class="blog-post-excerpt">
+                                    Uniquely customize future-proof niche markets via worldwide users. Proactively negotiate user-centric schemas after fully researched bandwidth. Intrinsically actualize client-centric resources before customized products.
+                                </p>
+                                <a href="404.html" class="btn-blog-readmore">Read More</a>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 4: Another Image Post Format -->
+                        <article class="blog-post-card">
+                            <div class="blog-post-media-wrap">
+                                <img src="assets/images/blog-post-bridge-sunset.webp" alt="Another Image Post Format" loading="lazy">
+                                <div class="blog-post-teal-banner">
+                                    <h2 class="blog-post-banner-title">
+                                        <a href="404.html">Another Image Post Format</a>
+                                    </h2>
+                                    <div class="blog-post-banner-meta">
+                                        By <a href="404.html">John Doe</a> Posted in <a href="404.html">Market Trends</a> On July 12, 2015
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-post-body">
+                                <p class="blog-post-excerpt">
+                                    Dramatically benchmark corporate leadership via scalable deliverables. Conveniently drive integrated testing procedures rather than just in time "outside the box" thinking. Credibly deploy synergistic relationships via extendible architectures. Conveniently conceptualize goal-oriented portals with vertical technologies. Quickly repurpose strategic markets without empowered convergence.
+                                </p>
+                                <a href="404.html" class="btn-blog-readmore">Read More</a>
+                            </div>
+                        </article>
+
+                        <!-- PAGINATION -->
+                        <div class="blog-pagination-row">
+                            <a href="404.html" class="blog-page-btn active">1</a>
+                            <a href="404.html" class="blog-page-btn">2</a>
+                            <a href="404.html" class="blog-page-next">Next &rsaquo;</a>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN: SIDEBAR WIDGETS -->
+                    <aside class="blog-sidebar-column">
+                        
+                        <!-- Widget 1: Agents -->
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Agents</h3>
+                            <div class="sidebar-agents-list">
+                                
+                                <!-- Agent 1 -->
+                                <div class="sidebar-agent-card">
+                                    <div class="sidebar-agent-avatar">
+                                        <img src="assets/images/agent-profile-3.webp" alt="Nathan James" loading="lazy">
+                                    </div>
+                                    <div class="sidebar-agent-info">
+                                        <div class="sidebar-agent-name">Nathan James</div>
+                                        <a href="mailto:nathan@realhomes.io" class="sidebar-agent-email">nathan@realhomes.io</a>
+                                        <span class="sidebar-agent-phone">1-234-456-7893</span>
+                                    </div>
+                                </div>
+
+                                <!-- Agent 2 -->
+                                <div class="sidebar-agent-card">
+                                    <div class="sidebar-agent-avatar">
+                                        <img src="assets/images/agent-profile-2.webp" alt="Melissa William" loading="lazy">
+                                    </div>
+                                    <div class="sidebar-agent-info">
+                                        <div class="sidebar-agent-name">Melissa William</div>
+                                        <a href="mailto:melissa@realhomes.io" class="sidebar-agent-email">melissa@realhomes.io</a>
+                                        <span class="sidebar-agent-phone">1-234-456-7892</span>
+                                    </div>
+                                </div>
+
+                                <!-- Agent 3 -->
+                                <div class="sidebar-agent-card">
+                                    <div class="sidebar-agent-avatar">
+                                        <img src="assets/images/agent-1.webp" alt="Alice Brian" loading="lazy">
+                                    </div>
+                                    <div class="sidebar-agent-info">
+                                        <div class="sidebar-agent-name">Alice Brian</div>
+                                        <a href="mailto:alice@realhomes.io" class="sidebar-agent-email">alice@realhomes.io</a>
+                                        <span class="sidebar-agent-phone">1-234-456-7891</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Widget 2: Featured Properties -->
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Featured Properties</h3>
+                            <div class="sidebar-featured-props-list">
+                                
+                                <!-- Property 1: Home in Coral Gables -->
+                                <div class="sidebar-feat-prop-card">
+                                    <div class="sidebar-feat-thumb-wrap">
+                                        <img src="assets/images/prop-1.webp" alt="Home in Coral Gables" loading="lazy">
+                                        <span class="sidebar-feat-badge">Featured</span>
+                                        <div class="sidebar-feat-icons">
+                                            <i class="far fa-heart"></i>
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                    </div>
+                                    <div class="sidebar-feat-body">
+                                        <h4 class="sidebar-feat-title">
+                                            <a href="404.html">Home in Coral Gables</a>
+                                        </h4>
+                                        <p class="sidebar-feat-desc">Elegant retreat in a quiet Coral Gables setting. This home...</p>
+                                        <div class="sidebar-feat-specs">
+                                            <div class="sidebar-feat-spec-item">
+                                                <i class="fas fa-bed"></i> 4
+                                            </div>
+                                            <div class="sidebar-feat-spec-item">
+                                                <i class="fas fa-bath"></i> 4.5
+                                            </div>
+                                            <div class="sidebar-feat-spec-item">
+                                                <i class="far fa-clone"></i> 3800 <small>Sq Ft</small>
+                                            </div>
+                                        </div>
+                                        <div class="sidebar-feat-price-status">For Sale</div>
+                                        <div class="sidebar-feat-price">$850,000.00</div>
+                                    </div>
+                                </div>
+
+                                <!-- Property 2: Luxury Apartment -->
+                                <div class="sidebar-feat-prop-card">
+                                    <div class="sidebar-feat-thumb-wrap">
+                                        <img src="assets/images/prop-2.webp" alt="Luxury Apartment" loading="lazy">
+                                        <span class="sidebar-feat-badge">Featured</span>
+                                        <div class="sidebar-feat-icons">
+                                            <i class="far fa-heart"></i>
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                    </div>
+                                    <div class="sidebar-feat-body">
+                                        <h4 class="sidebar-feat-title">
+                                            <a href="404.html">Luxury Apartment</a>
+                                        </h4>
+                                        <p class="sidebar-feat-desc">Luxury Apartment available in an ideal location, with city and...</p>
+                                        <div class="sidebar-feat-specs">
+                                            <div class="sidebar-feat-spec-item">
+                                                <i class="fas fa-bed"></i> 2
+                                            </div>
+                                            <div class="sidebar-feat-spec-item">
+                                                <i class="fas fa-bath"></i> 2
+                                            </div>
+                                            <div class="sidebar-feat-spec-item">
+                                                <i class="far fa-clone"></i> 1650 <small>Sq Ft</small>
+                                            </div>
+                                        </div>
+                                        <div class="sidebar-feat-price-status">For Rent</div>
+                                        <div class="sidebar-feat-price">$2,500.00 Monthly</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Widget 3: Contact Us -->
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Contact Us</h3>
+                            <form class="sidebar-contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+                                <div class="sidebar-form-group">
+                                    <label class="sidebar-form-label">Name</label>
+                                    <input type="text" class="sidebar-form-input" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" onkeypress="return /[a-zA-Z\s]/.test(event.key)">
+                                </div>
+                                <div class="sidebar-form-group">
+                                    <label class="sidebar-form-label">Email</label>
+                                    <input type="email" class="sidebar-form-input" required>
+                                </div>
+                                <div class="sidebar-form-group">
+                                    <label class="sidebar-form-label">Phone Number</label>
+                                    <input type="tel" class="sidebar-form-input" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeypress="return /[0-9]/.test(event.key)">
+                                </div>
+                                <div class="sidebar-form-group">
+                                    <label class="sidebar-form-label">Message</label>
+                                    <textarea class="sidebar-form-textarea" required></textarea>
+                                </div>
+                                <div class="sidebar-gdpr-row">
+                                    <input type="checkbox" id="sidebarGdpr" class="sidebar-gdpr-checkbox" required>
+                                    <label for="sidebarGdpr" class="sidebar-gdpr-text">
+                                        I consent to having this website store my submitted information so they can respond to my inquiry.
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn-sidebar-send">Send Message</button>
+                            </form>
+                        </div>
+
+                        <!-- Widget 4: Property Types -->
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Property Types</h3>
+                            <ul class="sidebar-category-list">
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Commercial</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Office</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Shop</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Residential</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Apartment</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Apartment Building</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Condominium</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Single Family</a></li>
+                                <li class="sidebar-category-item"><a href="404.html"><i class="fas fa-play fa-xs"></i> Villa</a></li>
+                            </ul>
+                            <div class="sidebar-search-row">
+                                <input type="text" class="sidebar-search-input" placeholder="Search...">
+                                <button type="button" class="btn-sidebar-search-action">Search</button>
+                            </div>
+                        </div>
+
+                        <!-- Widget 5: Categories -->
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Categories</h3>
+                            <ul class="sidebar-category-list">
+                                <li class="sidebar-category-item"><a href="#"><i class="fas fa-play fa-xs"></i> Comfort</a></li>
+                                <li class="sidebar-category-item"><a href="#"><i class="fas fa-play fa-xs"></i> Luxury</a></li>
+                                <li class="sidebar-category-item"><a href="#"><i class="fas fa-play fa-xs"></i> Market Trends</a></li>
+                            </ul>
+                        </div>
+
+                    </aside>
+
+                </div>
+            </div>
+        </main>
+
+        <!-- SITE FOOTER (DARK THEMED WITH SLANTED TOP) -->
+        <footer class="site-footer-modern" id="mainFooter">
+            <div class="section-container">
+                
+                <!-- Top Brand & Social Bar -->
+                <div class="footer-top-brand-bar">
+                    <div class="footer-brand-left">
+                        <a href="index.html" class="brand-logo">
+                            <img src="stackly1.webp" alt="Stackly Logo" style="height: 45px; width: auto;">
+                        </a>
+                        <span class="footer-tagline-divider">/</span>
+                        <span class="footer-brand-tagline">Simply #1 Real Estate Theme</span>
+                    </div>
+
+                   <ul class="footer-social-links">
+                        <li><a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="404.html" aria-label="Twitter X"><i class="fab fa-x-twitter"></i></a></li>
+                        <li><a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="404.html" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+                        <li><a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="404.html" aria-label="Skype"><i class="fab fa-skype"></i></a></li>
+                        <li><a href="404.html" aria-label="RSS Feed"><i class="fas fa-rss"></i></a></li>
+                    </ul>
+                </div>
+
+                <!-- Main 3-Column Footer Grid -->
+                <div class="footer-main-columns">
+                    
+                    <!-- Col 1: Quick Links -->
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Quick Links</h4>
+                         <ul class="footer-quick-links-grid">
+                            <li><a href="index.html"><i class="fas fa-play"></i> Home</a></li>
+                            <li><a href="real-estate.html"><i class="fas fa-play"></i> Real Estate</a></li>
+                            <li><a href="property.html"><i class="fas fa-play"></i> Property</a></li>
+                            <li><a href="elementor.html"><i class="fas fa-play"></i> Elementor</a></li>
+                             <li><a href="blog.html"><i class="fas fa-play"></i> Blog</a></li>
+                            <li><a href="contact.html"><i class="fas fa-play"></i> Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 2: Contact Us -->
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Contact Us</h4>
+                        <ul class="footer-contact-list">
+                            <li class="footer-contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>3015 Grand Ave, Coconut Grove, Merrick Way, FL 12345</span>
+                            </li>
+                            <li class="footer-contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <a href="tel:+123-456-789">+123-456-789</a>
+                            </li>
+                            <li class="footer-contact-item">
+                                <i class="far fa-envelope"></i>
+                                <a href="mailto:sales@example.com">sales@example.com</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Remain Updated Newsletter -->
+                    <div class="footer-col footer-col-newsletter">
+                        <h4 class="footer-col-title">Remain Updated</h4>
+                        <form class="footer-newsletter-form" id="newsletterForm">
+                            <div class="newsletter-input-row">
+                                <input type="email" class="newsletter-input" id="newsletterEmailInput" placeholder="Your email address" required>
+                            </div>
+                            <button type="submit" class="btn-newsletter-signup">Sign up</button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Copyright & Designed By -->
+                <div class="footer-bottom-legal">
+                    <p class="footer-copy">&copy; 2026. All rights reserved.</p>
+                    <p class="footer-designed-by">Designed by <a href="404.html" target="_blank" rel="noopener noreferrer">Inspiry Themes</a></p>
+                </div>
+
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

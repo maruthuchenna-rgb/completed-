@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa on Grand Avenue - Real Homes</title>
+    
+    <!-- Meta SEO & Favicon -->
+    <meta name="description" content="Villa on Grand Avenue luxury property for rent in Miami, FL. 4 Bedrooms, 4 Bathrooms, 9350 Sq Ft.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Leaflet Map CSS for Crystal Clear Interactive Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Project Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <!-- HERO BANNER & NAVIGATION -->
+        <header class="re-hero-section">
+            <div class="re-hero-overlay"></div>
+
+            <!-- Top Header Bar -->
+            <div class="site-header site-header-re">
+                <div class="header-container">
+                    
+                    <!-- Brand Logo -->
+                    <a href="index.html" class="brand-logo">
+                        <img src="stackly1.webp" alt="Stackly Logo" style="height: 45px; width: auto;">
+                    </a>
+
+                    <!-- Navigation Menu with Property Highlighted -->
+                    <nav class="main-nav" id="mainNav">
+                        <ul class="nav-list">
+                            <li><a href="index.html" class="nav-link">Home</a></li>
+                            <li><a href="real-estate.html" class="nav-link">Real Estate</a></li>
+                            <li><a href="property.html" class="nav-link active-tab-orange">Property</a></li>
+                            <li><a href="elementor.html" class="nav-link">Elementor</a></li>
+                            <li><a href="blog.html" class="nav-link">Blog</a></li>
+                            <li><a href="contact.html" class="nav-link">Contact</a></li>
+                            
+                        </ul>
+                    </nav>
+
+                    <!-- Header Right Elements -->
+                     <div class="header-right">
+                        <a href="login.html" class="btn-header-login">Login</a>
+
+                        <!-- Mobile Hamburger Toggle -->
+                        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Page Title Row -->
+            <div class="re-hero-content">
+                <div class="section-container">
+                    <div class="re-hero-header-row">
+                        <h1 class="re-page-title">Villa on Grand Avenue</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- FLOATING SEARCH BAR -->
+        <div class="re-search-bar-wrapper">
+            <div class="re-search-bar">
+                
+                <!-- Location Segment -->
+                <div class="re-search-segment" id="propLocSegment" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="re-segment-label">Location</span>
+                    <div class="re-segment-value-row">
+                        <span class="selected-text">All Locations</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <ul class="search-dropdown-options" role="listbox">
+                        <li class="search-option-item selected" data-value="all"><i class="fas fa-globe"></i> All Locations</li>
+                        <li class="search-option-item" data-value="Miami"><i class="fas fa-umbrella-beach"></i> Miami Beach, FL</li>
+                        <li class="search-option-item" data-value="Coral Gables"><i class="fas fa-city"></i> Coral Gables, FL</li>
+                        <li class="search-option-item" data-value="Hollywood"><i class="fas fa-film"></i> Hollywood, FL</li>
+                    </ul>
+                </div>
+
+                <!-- Property Status Segment -->
+                <div class="re-search-segment" id="propStatusSegment" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="re-segment-label">Property Status</span>
+                    <div class="re-segment-value-row">
+                        <span class="selected-text">Any</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <ul class="search-dropdown-options" role="listbox">
+                        <li class="search-option-item selected" data-value="all"><i class="fas fa-asterisk"></i> Any Status</li>
+                        <li class="search-option-item" data-value="For Sale"><i class="fas fa-home"></i> For Sale</li>
+                        <li class="search-option-item" data-value="For Rent"><i class="fas fa-key"></i> For Rent</li>
+                    </ul>
+                </div>
+
+                <!-- Property Type Segment -->
+                <div class="re-search-segment" id="propTypeSegment" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="re-segment-label">Property Type</span>
+                    <div class="re-segment-value-row">
+                        <span class="selected-text">All Types</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <ul class="search-dropdown-options" role="listbox">
+                        <li class="search-option-item selected" data-value="all"><i class="fas fa-layer-group"></i> All Types</li>
+                        <li class="search-option-item" data-value="Villa"><i class="fas fa-hotel"></i> Luxury Villa</li>
+                        <li class="search-option-item" data-value="Single Family"><i class="fas fa-house-user"></i> Single Family</li>
+                        <li class="search-option-item" data-value="Apartment"><i class="fas fa-building"></i> Modern Apartment</li>
+                    </ul>
+                </div>
+
+                <!-- Action Buttons: Adv Search + Submit -->
+                <div class="re-search-actions">
+                    <button type="button" class="btn-re-adv-toggle" id="btnAdvSearchToggle" title="Advance Search" aria-label="Advance Search" aria-expanded="false">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button type="button" class="btn-re-search-submit" id="btnPropSearchSubmit">
+                        <i class="fas fa-search"></i>
+                        <span>Search</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Expandable Advance Search Drawer -->
+            <div class="advance-search-drawer" id="advanceSearchDrawer">
+                <div class="drawer-grid">
+                    <div class="drawer-field">
+                        <label for="minPrice">Min Price ($)</label>
+                        <select id="minPrice" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="250000">$250,000</option>
+                            <option value="500000">$500,000</option>
+                            <option value="1000000">$1,000,000</option>
+                            <option value="2500000">$2,500,000</option>
+                        </select>
+                    </div>
+                    <div class="drawer-field">
+                        <label for="maxPrice">Max Price ($)</label>
+                        <select id="maxPrice" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="1000000">$1,000,000</option>
+                            <option value="2500000">$2,500,000</option>
+                            <option value="5000000">$5,000,000</option>
+                            <option value="10000000">$10,000,000+</option>
+                        </select>
+                    </div>
+                    <div class="drawer-field">
+                        <label for="bedrooms">Bedrooms</label>
+                        <select id="bedrooms" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                    <div class="drawer-field">
+                        <label for="bathrooms">Bathrooms</label>
+                        <select id="bathrooms" class="drawer-select">
+                            <option value="">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Amenities Checkboxes -->
+                <div class="drawer-features">
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Air Conditioning
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Swimming Pool
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox"> Central Heating
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Garden
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox" checked> Garage
+                    </label>
+                    <label class="drawer-checkbox-label">
+                        <input type="checkbox"> Security System
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN PROPERTY DETAIL SECTION -->
+        <main class="single-prop-main-section">
+            <div class="section-container">
+                
+                <!-- Property Header: Title, Breadcrumbs, Address, Price -->
+                <div class="prop-detail-header-wrap">
+                    <div>
+                        <div class="prop-breadcrumbs">
+                            <a href="404.html">Home</a>
+                            <span>&rsaquo;</span>
+                            <a href="404.html">Miami</a>
+                        </div>
+                        <h2 class="prop-detail-title">Villa on Grand Avenue</h2>
+                        <div class="prop-detail-address">3015 Grand Avenue, Miami, FL</div>
+                    </div>
+
+                    <div class="prop-detail-price-box">
+                        <span class="prop-detail-status-badge">For Rent</span>
+                        <div class="prop-detail-price-val">$4,750.00 Monthly</div>
+                    </div>
+                </div>
+
+                <!-- Interactive High-Res Property Slider Gallery (Clean - No Scrollbar Artifacts) -->
+                <div class="prop-slider-container" id="propGallerySlider">
+                    <div class="prop-slider-main-image-wrap">
+                        <img src="assets/images/single-property-slide-1.webp" alt="Villa on Grand Avenue Main View" id="propMainSlideImg" loading="lazy">
+                    </div>
+
+                    <!-- Left / Right Slider Arrows -->
+                    <button type="button" class="prop-slider-btn prop-slider-prev" id="propSlidePrev" aria-label="Previous image">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="prop-slider-btn prop-slider-next" id="propSlideNext" aria-label="Next image">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- COMPREHENSIVE 2-COLUMN LAYOUT: MAIN CONTENT + SIDEBAR -->
+                <div class="prop-content-sidebar-layout">
+                    
+                    <!-- LEFT / MAIN CONTENT COLUMN -->
+                    <div class="prop-main-column">
+                        
+                        <!-- Top Meta Row: Property ID, Ribbon Badges, Share/Print/Favorite Actions -->
+                        <div class="prop-top-meta-bar">
+                            <div class="prop-id-badge-group">
+                                <span>Property ID: <strong>RH-2017-09</strong></span>
+                                <span class="prop-badge-featured-sm">Featured</span>
+                            </div>
+
+                            <div class="prop-social-action-icons">
+                                <a href="#" title="Share Property" aria-label="Share"><i class="fas fa-share-alt"></i></a>
+                                <button type="button" class="btn-favorite" title="Add to Favorites" aria-label="Favorite"><i class="far fa-heart"></i></button>
+                                <button type="button" class="btn-compare" title="Compare Property" aria-label="Compare"><i class="fas fa-exchange-alt"></i></button>
+                                <a href="javascript:window.print()" title="Print Page" aria-label="Print"><i class="fas fa-print"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Detailed 6-Item Quick Specs Row -->
+                        <div class="prop-quick-specs-grid">
+                            <div class="quick-spec-item">
+                                <span class="quick-spec-label">Bedrooms</span>
+                                <div class="quick-spec-val"><i class="fas fa-bed"></i> 4</div>
+                            </div>
+                            <div class="quick-spec-item">
+                                <span class="quick-spec-label">Bathrooms</span>
+                                <div class="quick-spec-val"><i class="fas fa-bath"></i> 4</div>
+                            </div>
+                            <div class="quick-spec-item">
+                                <span class="quick-spec-label">Garage</span>
+                                <div class="quick-spec-val"><i class="fas fa-car"></i> 2</div>
+                            </div>
+                            <div class="quick-spec-item">
+                                <span class="quick-spec-label">Year Built</span>
+                                <div class="quick-spec-val"><i class="far fa-calendar-alt"></i> 2016</div>
+                            </div>
+                            <div class="quick-spec-item">
+                                <span class="quick-spec-label">Area</span>
+                                <div class="quick-spec-val"><i class="far fa-square"></i> 9350 <small>Sq Ft</small></div>
+                            </div>
+                            <div class="quick-spec-item">
+                                <span class="quick-spec-label">Lot Size</span>
+                                <div class="quick-spec-val"><i class="fas fa-vector-square"></i> 10000 <small>Sq Ft</small></div>
+                            </div>
+                        </div>
+
+                        <!-- Description Section -->
+                        <div class="prop-section-block">
+                            <h3 class="prop-section-heading">Description</h3>
+                            <div class="prop-desc-content">
+                                <p>Spacious and fabulous home in a prime location. This executive style four bed, four bath home has impact-resistant windows, renovated kitchen with wood cabinets, granite countertops, and a luminous breakfast area. All bathrooms are tastefully redone with contemporary elements and vanities.</p>
+                                <p>Open floor plan leads to the patio, pool and backyard for great entertainment or relaxation. Live in the city beautiful, enjoy the best shopping, restaurants, schools, and much more this home offers.</p>
+                            </div>
+                        </div>
+
+                        <!-- Common Note Box -->
+                        <div class="prop-common-note-box">
+                            <h4 class="prop-common-note-title">Common Note</h4>
+                            <p class="prop-common-note-text">This is a sample note to share some basic information on all properties. This note can be enabled or disabled from Real Homes settings and its text plus label is fully customizable.</p>
+                        </div>
+
+                        <!-- Features & Amenities Checklist -->
+                        <div class="prop-section-block">
+                            <h3 class="prop-section-heading">Features</h3>
+                            <div class="prop-features-grid">
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> 2 Stories</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Central Cooling</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Dual Sinks</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Electric Range</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Fire Place</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Home Theater</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Laundry Room</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Marble Floors</div>
+                                <div class="prop-feature-check-item"><i class="fas fa-check"></i> Swimming Pool</div>
+                            </div>
+                        </div>
+
+                        <!-- Floor Plans Section (Enlarged High-Res Layout) -->
+                        <div class="prop-section-block">
+                            <div class="prop-section-header-flex">
+                                <h3 class="prop-section-heading"><i class="fas fa-drafting-compass" style="color: var(--primary-teal); margin-right: 8px;"></i>Architectural Floor Blueprints</h3>
+                                <div class="floor-plan-pills-nav">
+                                    <button type="button" class="btn-floor-tab active" data-target="floorMain">
+                                        <i class="fas fa-layer-group"></i> Main Floor Blueprint (2,450 sq ft)
+                                    </button>
+                                    <button type="button" class="btn-floor-tab" data-target="floorUpper">
+                                        <i class="fas fa-layer-group"></i> Upper Level Blueprint (1,350 sq ft)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="prop-floor-plans-card">
+                                <!-- Dimensional Spec Summary Bar -->
+                                <div class="floor-plan-spec-bar">
+                                    <div class="floor-spec-stat">
+                                        <span class="floor-spec-label">Total Living Area</span>
+                                        <span class="floor-spec-val">3,800 Sq Ft</span>
+                                    </div>
+                                    <div class="floor-spec-stat">
+                                        <span class="floor-spec-label">Bedrooms</span>
+                                        <span class="floor-spec-val">4 Luxury Beds</span>
+                                    </div>
+                                    <div class="floor-spec-stat">
+                                        <span class="floor-spec-label">Bathrooms</span>
+                                        <span class="floor-spec-val">3.5 Baths</span>
+                                    </div>
+                                    <div class="floor-spec-stat">
+                                        <span class="floor-spec-label">Ceiling Height</span>
+                                        <span class="floor-spec-val">10.5 Ft</span>
+                                    </div>
+                                </div>
+
+                                <!-- Large Floor Plan Display Container -->
+                                <div class="floor-plan-canvas-wrap">
+                                    <img src="assets/images/prop-floor-plan.webp" alt="Villa on Grand Avenue Architectural Floor Blueprint" class="floor-plan-large-img" id="floorPlanActiveImg" loading="lazy">
+                                    
+                                    <div class="floor-plan-actions-overlay">
+                                        <a href="assets/images/prop-floor-plan.webp" target="_blank" rel="noopener noreferrer" class="btn-floor-expand" id="floorPlanExpandBtn" title="Open Fullscreen High-Res Blueprint">
+                                            <i class="fas fa-expand-arrows-alt"></i> View Full-Size Blueprint
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Property Video Section -->
+                        <div class="prop-section-block" id="propertyVideoSection">
+                            <div class="prop-section-header-flex">
+                                <h3 class="prop-section-heading"><i class="fas fa-video" style="color: var(--primary-teal); margin-right: 8px;"></i>Property Video Tour</h3>
+                                <div class="prop-video-badges">
+                                    <button type="button" class="badge-slowmo" id="videoSpeedToggle" title="Toggle Slow Motion Mode (0.75x / 1.0x)"><i class="fas fa-gauge-simple-med"></i> <span id="speedLabel">Slow-Mo 0.75x</span></button>
+                                    <span class="badge-hd"><i class="fas fa-circle" style="color:#ef4444; font-size:7px; vertical-align: middle; margin-right:4px;"></i>HD 4K Tour</span>
+                                </div>
+                            </div>
+                            <div class="prop-video-player-container" id="propVideoContainer">
+                                <video id="propTourVideo" class="prop-tour-html5-video" poster="assets/images/prop-video-thumb.webp" preload="metadata" playsinline>
+                                    <source src="assets/videos/property-tour-video.webm" type="video/webm">
+                                    <source src="assets/videos/property-tour-video.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                
+                                <!-- Interactive Overlay with Play Pulse Button -->
+                                <div class="prop-video-overlay" id="propVideoOverlay">
+                                    <button type="button" class="prop-video-play-pulse-btn" id="propVideoPlayBtn" aria-label="Play Property Video Tour">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <div class="prop-video-overlay-details">
+                                        <span class="prop-video-pill"><i class="fas fa-film"></i> Cinematic Luxury Tour</span>
+                                        <span class="prop-video-duration"><i class="far fa-clock"></i> Slow-Motion Walkthrough</span>
+                                    </div>
+                                </div>
+
+                                <!-- Custom Video Controls Bar -->
+                                <div class="prop-video-custom-controls" id="propVideoControls">
+                                    <button type="button" class="btn-ctrl-play" id="btnCtrlPlayPause" title="Play/Pause"><i class="fas fa-play"></i></button>
+                                    <div class="video-progress-bar-wrap" id="videoProgressWrap">
+                                        <div class="video-progress-filled" id="videoProgressBar"></div>
+                                    </div>
+                                    <span class="video-time-display" id="videoTimeDisplay">0:00 / 0:00</span>
+                                    <button type="button" class="btn-ctrl-mute" id="btnCtrlMute" title="Mute/Unmute"><i class="fas fa-volume-up"></i></button>
+                                    <button type="button" class="btn-ctrl-slowmo" id="btnCtrlSlowMo" title="Toggle Slow-Motion (0.75x)"><i class="fas fa-tachometer-alt"></i> 0.75x</button>
+                                    <button type="button" class="btn-ctrl-fullscreen" id="btnCtrlFullscreen" title="Fullscreen"><i class="fas fa-expand"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Property on Map Section -->
+                        <div class="prop-section-block" id="propertyMapSection">
+                            <div class="prop-section-header-flex">
+                                <h3 class="prop-section-heading"><i class="fas fa-map-location-dot" style="color: var(--primary-teal); margin-right: 8px;"></i>Property Location &amp; Surroundings</h3>
+                                <div class="prop-map-toolbar">
+                                    <button type="button" class="btn-map-layer active" data-layer="streets" id="btnMapStreets"><i class="fas fa-road"></i> Streets</button>
+                                    <button type="button" class="btn-map-layer" data-layer="satellite" id="btnMapSatellite"><i class="fas fa-satellite"></i> Satellite</button>
+                                    <button type="button" class="btn-map-reset" id="btnMapRecenter" title="Recenter Map on Property"><i class="fas fa-crosshairs"></i> Recenter</button>
+                                </div>
+                            </div>
+                            <div class="prop-interactive-map-card">
+                                <div id="propSingleLeafletMap" class="prop-leaflet-map-canvas" role="region" aria-label="Interactive Map of Grand Avenue Miami"></div>
+                                <div class="prop-map-info-floating-card">
+                                    <div class="map-floating-icon"><i class="fas fa-location-dot"></i></div>
+                                    <div class="map-floating-text">
+                                        <span class="map-floating-title">Villa on Grand Avenue</span>
+                                        <span class="map-floating-sub">3015 Grand Ave, Coconut Grove, Miami, FL 33133</span>
+                                    </div>
+                                    <a href="https://maps.google.com/?q=25.7289,-80.2589" target="_blank" rel="noopener noreferrer" class="btn-map-get-directions" title="Get Driving Directions in Google Maps">
+                                        <i class="fas fa-diamond-turn-right"></i> Directions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Energy Performance Section -->
+                        <div class="prop-section-block">
+                            <h3 class="prop-section-heading">Energy Performance</h3>
+                            <div class="energy-perf-card">
+                                <table class="energy-specs-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>ENERGY CLASS:</td>
+                                            <td>B</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ENERGY PERFORMANCE:</td>
+                                            <td>87 kWh/m²a</td>
+                                        </tr>
+                                        <tr>
+                                            <td>EPC CURRENT RATING:</td>
+                                            <td>81</td>
+                                        </tr>
+                                        <tr>
+                                            <td>EPC POTENTIAL RATING:</td>
+                                            <td>84</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- Visual Energy Rating Color Scale Bar -->
+                                <div class="energy-rating-bar">
+                                    <div class="energy-rating-pill e-pill-aplus">A+</div>
+                                    <div class="energy-rating-pill e-pill-a">A</div>
+                                    <div class="energy-rating-pill e-pill-b">B &#9660;</div>
+                                    <div class="energy-rating-pill e-pill-c">C</div>
+                                    <div class="energy-rating-pill e-pill-d">D</div>
+                                    <div class="energy-rating-pill e-pill-e">E</div>
+                                    <div class="energy-rating-pill e-pill-f">F</div>
+                                    <div class="energy-rating-pill e-pill-g">G</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Schedule A Tour Section -->
+                        <div class="prop-section-block">
+                            <h3 class="prop-section-heading">Schedule A Tour</h3>
+                            <div class="schedule-tour-card">
+                                <form class="tour-inputs-wrap" id="scheduleTourForm">
+                                    <div class="tour-type-toggle">
+                                        <button type="button" class="btn-tour-type active" id="btnTourInPerson">In-Person</button>
+                                        <button type="button" class="btn-tour-type" id="btnTourVideo">Video Chat</button>
+                                    </div>
+                                    
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <input type="date" class="tour-input" required>
+                                        <select class="tour-select">
+                                            <option>10:00 am</option>
+                                            <option>11:30 am</option>
+                                            <option>02:00 pm</option>
+                                            <option>04:30 pm</option>
+                                        </select>
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <input type="text" class="tour-input" placeholder="Your Name" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" onkeypress="return /[a-zA-Z\s]/.test(event.key)">
+                                        <input type="tel" class="tour-input" placeholder="Your Phone" required inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeypress="return /[0-9]/.test(event.key)">
+                                    </div>
+
+                                    <input type="email" class="tour-input" placeholder="Your Email" required>
+                                    <textarea class="tour-textarea" rows="3" placeholder="Message"></textarea>
+                                    
+                                    <button type="submit" class="btn-submit-tour">Schedule</button>
+                                </form>
+
+                                <div class="tour-info-right">
+                                    <img src="assets/images/single-property-slide-1.webp" alt="Discover your dream property" class="tour-info-img">
+                                    <h4 class="tour-info-title">Discover your dream property</h4>
+                                    <p class="tour-info-desc">Immerse yourself in the captivating ambiance of our properties. <strong>Book a personalized tour</strong> to explore the exquisite beauty and unique features of our property.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT / SIDEBAR COLUMN -->
+                    <aside class="prop-sidebar">
+                        
+                        <!-- Agent Nathan James Contact Card -->
+                        <div class="agent-contact-sidebar-card">
+                            <div class="agent-sidebar-avatar-wrap">
+                                <img src="assets/images/agent-profile-3.webp" alt="Agent Nathan James" loading="lazy">
+                            </div>
+
+                            <h3 class="agent-sidebar-name">Agent Nathan James</h3>
+                            <ul class="agent-contact-details-list">
+                                <li>Office: <strong>1-222-333-4444</strong></li>
+                                <li>Mobile: <strong>1-234-456-7893</strong></li>
+                                <li>Fax: <strong>1-333-444-5555</strong></li>
+                                <li>WhatsApp: <strong>1-234-456-7894</strong></li>
+                                <li>Email: <strong>nathan@realhomes.io</strong></li>
+                            </ul>
+
+                            <a href="404.html" class="btn-view-my-listings">View My Listings</a>
+
+                            <!-- Message Form -->
+                            <form class="agent-msg-form" id="agentSidebarMsgForm">
+                                <input type="text" class="sidebar-form-input" placeholder="Name" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" onkeypress="return /[a-zA-Z\s]/.test(event.key)">
+                                <input type="email" class="sidebar-form-input" placeholder="Email" required>
+                                <input type="tel" class="sidebar-form-input" placeholder="Phone" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeypress="return /[0-9]/.test(event.key)">
+                                <textarea class="sidebar-form-textarea" rows="4">Hello, I am interested in [Villa on Grand Avenue].</textarea>
+
+                                <div class="sidebar-gdpr-wrap">
+                                    <input type="checkbox" id="sidebarGdpr" required>
+                                    <label for="sidebarGdpr">GDPR Agreement *<br>I consent to having this website store my submitted information so they can respond to my inquiry.</label>
+                                </div>
+
+                                <div class="agent-action-buttons-row">
+                                    <a href="404.html" target="_blank" rel="noopener noreferrer" class="btn-agent-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                    <a href="404.html" class="btn-agent-call"><i class="fas fa-phone-alt"></i> Call Now</a>
+                                </div>
+
+                                <button type="submit" class="btn-agent-send-msg">
+                                    <i class="far fa-paper-plane"></i>
+                                    <span>Send Message</span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Featured Properties Sidebar Widget -->
+                        <div class="sidebar-featured-widget">
+                            <h3 class="prop-section-heading">Featured Properties</h3>
+
+                            <!-- Featured Item 1: Luxury Apartment -->
+                            <div class="sidebar-prop-card">
+                                <div class="sidebar-prop-thumb-wrap">
+                                    <img src="assets/images/re-list-prop-5.webp" alt="Luxury Apartment" class="sidebar-prop-thumb-img" loading="lazy">
+                                    <span class="re-corner-ribbon-featured">Featured</span>
+                                </div>
+                                <div class="sidebar-prop-body">
+                                    <h4 class="sidebar-prop-title"><a href="404.html">Luxury Apartment</a></h4>
+                                    <p style="font-size: 12px; color: var(--muted-text); margin-bottom: 8px;">Luxury Apartment available in an ideal location with city and...</p>
+                                    <div class="sidebar-prop-specs">
+                                        <span><i class="fas fa-bed"></i> 2 Beds</span>
+                                        <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                        <span><i class="far fa-square"></i> 1650 sq ft</span>
+                                    </div>
+                                    <div class="sidebar-prop-price">$2,500.00 Monthly</div>
+                                </div>
+                            </div>
+
+                            <!-- Featured Item 2: Home in Merrick Way -->
+                            <div class="sidebar-prop-card">
+                                <div class="sidebar-prop-thumb-wrap">
+                                    <img src="assets/images/re-list-prop-1.webp" alt="Home in Merrick Way" class="sidebar-prop-thumb-img" loading="lazy">
+                                    <span class="re-corner-ribbon-featured">Featured</span>
+                                    <span class="re-corner-ribbon-hot">Hot</span>
+                                </div>
+                                <div class="sidebar-prop-body">
+                                    <h4 class="sidebar-prop-title"><a href="404.html">Home in Merrick Way</a></h4>
+                                    <p style="font-size: 12px; color: var(--muted-text); margin-bottom: 8px;">Enchanting three bedroom, three bath home with spacious one bedroom...</p>
+                                    <div class="sidebar-prop-specs">
+                                        <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                        <span><i class="fas fa-bath"></i> 3 Baths</span>
+                                        <span><i class="far fa-square"></i> 4300 Sq Ft</span>
+                                    </div>
+                                    <div class="sidebar-prop-price">$540,000.00</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </div>
+        </main>
+
+        <!-- SIMILAR PROPERTIES SECTION -->
+        <section class="similar-properties-section" id="similarPropertiesSection">
+            <div class="section-container">
+                <h3 class="similar-prop-title">Similar Properties</h3>
+
+                <!-- Filter Buttons Tabs -->
+                <div class="similar-prop-tabs-wrap">
+                    <a href="404.html" type="button" class="btn-similar-tab active">Recommended</a>
+                    <a href="404.html" type="button" class="btn-similar-tab">Property Features</a>
+                    <a href="404.html" type="button" class="btn-similar-tab">Property Type</a>
+                    <a href="404.html" type="button" class="btn-similar-tab">Property Location</a>
+                    <a href="404.html" type="button" class="btn-similar-tab">Property Status</a>
+                    <a href="404.html" type="button" class="btn-similar-tab">Property Agent</a>
+                </div>
+
+                <!-- 2-Card Grid -->
+                <div class="similar-cards-grid">
+                    
+                    <!-- Card 1: Traditional Food Restaurant -->
+                    <article class="similar-card">
+                        <div class="similar-card-thumb-wrap">
+                            <img src="assets/images/similar-prop-restaurant.webp" alt="Traditional Food Restaurant" class="similar-card-thumb-img" loading="lazy">
+                        </div>
+                        <div class="similar-card-body">
+                            <h4 class="similar-card-prop-title"><a href="404.html">Traditional Food Restaurant</a></h4>
+                            <p class="similar-card-excerpt">We..</p>
+                            
+                            <div class="similar-card-specs-row">
+                                <div class="similar-spec-col">
+                                    <span class="similar-spec-label">Area</span>
+                                    <span class="similar-spec-val"><i class="far fa-square"></i> 950 Sq Ft</span>
+                                </div>
+                            </div>
+
+                            <div class="similar-card-price-box">
+                                <div class="similar-card-price-type">For Rent</div>
+                                <div class="similar-card-price-amount">$2,600.00 Monthly</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Condo on Biscayne Boulevard -->
+                    <article class="similar-card">
+                        <div class="similar-card-thumb-wrap">
+                            <img src="assets/images/similar-prop-condo.webp" alt="Condo on Biscayne Boulevard" class="similar-card-thumb-img" loading="lazy">
+                        </div>
+                        <div class="similar-card-body">
+                            <h4 class="similar-card-prop-title"><a href="404.html">Condo on Biscayne Boulevard</a></h4>
+                            <p class="similar-card-excerpt">A..</p>
+                            
+                            <div class="similar-card-specs-row">
+                                <div class="similar-spec-col">
+                                    <span class="similar-spec-label">Bedrooms</span>
+                                    <span class="similar-spec-val"><i class="fas fa-bed"></i> 2</span>
+                                </div>
+                                <div class="similar-spec-col">
+                                    <span class="similar-spec-label">Bathrooms</span>
+                                    <span class="similar-spec-val"><i class="fas fa-bath"></i> 2</span>
+                                </div>
+                                <div class="similar-spec-col">
+                                    <span class="similar-spec-label">Area</span>
+                                    <span class="similar-spec-val"><i class="far fa-square"></i> 1500 Sq Ft</span>
+                                </div>
+                            </div>
+
+                            <div class="similar-card-price-box">
+                                <div class="similar-card-price-type">For Rent</div>
+                                <div class="similar-card-price-amount">$3,250.00 Monthly</div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SITE FOOTER (DARK THEMED WITH SLANTED TOP) -->
+        <footer class="site-footer-modern" id="mainFooter">
+            <div class="section-container">
+                
+                <!-- Top Brand & Social Bar -->
+                <div class="footer-top-brand-bar">
+                    <div class="footer-brand-left">
+                        <a href="index.html" class="brand-logo">
+                            <img src="stackly1.webp" alt="Stackly Logo" style="height: 45px; width: auto;">
+                        </a>
+                        <span class="footer-tagline-divider">/</span>
+                        <span class="footer-brand-tagline">Simply #1 Real Estate Theme</span>
+                    </div>
+
+                  <ul class="footer-social-links">
+                        <li><a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="404.html" aria-label="Twitter X"><i class="fab fa-x-twitter"></i></a></li>
+                        <li><a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="404.html" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+                        <li><a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="404.html" aria-label="Skype"><i class="fab fa-skype"></i></a></li>
+                        <li><a href="404.html" aria-label="RSS Feed"><i class="fas fa-rss"></i></a></li>
+                    </ul>
+                </div>
+
+                <!-- Main 3-Column Footer Grid -->
+                <div class="footer-main-columns">
+                    
+                    <!-- Col 1: Quick Links -->
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Quick Links</h4>
+                       <ul class="footer-quick-links-grid">
+                            <li><a href="index.html"><i class="fas fa-play"></i> Home</a></li>
+                            <li><a href="real-estate.html"><i class="fas fa-play"></i> Real Estate</a></li>
+                            <li><a href="property.html"><i class="fas fa-play"></i> Property</a></li>
+                            <li><a href="elementor.html"><i class="fas fa-play"></i> Elementor</a></li>
+                             <li><a href="blog.html"><i class="fas fa-play"></i> Blog</a></li>
+                            <li><a href="contact.html"><i class="fas fa-play"></i> Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 2: Contact Us -->
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Contact Us</h4>
+                        <ul class="footer-contact-list">
+                            <li class="footer-contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>3015 Grand Ave, Coconut Grove, Merrick Way, FL 12345</span>
+                            </li>
+                            <li class="footer-contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <a href="tel:+123-456-789">+123-456-789</a>
+                            </li>
+                            <li class="footer-contact-item">
+                                <i class="far fa-envelope"></i>
+                                <a href="mailto:sales@example.com">sales@example.com</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Remain Updated Newsletter -->
+                    <div class="footer-col footer-col-newsletter">
+                        <h4 class="footer-col-title">Remain Updated</h4>
+                        <form class="footer-newsletter-form" id="newsletterForm">
+                            <div class="newsletter-input-row">
+                                <input type="email" class="newsletter-input" id="newsletterEmailInput" placeholder="Your email address" required>
+                            </div>
+                            <button type="submit" class="btn-newsletter-signup">Sign up</button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Copyright & Designed By -->
+                <div class="footer-bottom-legal">
+                    <p class="footer-copy">&copy; 2026. All rights reserved.</p>
+                    <p class="footer-designed-by">Designed by <a href="404.html" target="_blank" rel="noopener noreferrer">Inspiry Themes</a></p>
+                </div>
+
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Leaflet JS for Crystal-Clear Interactive Maps -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

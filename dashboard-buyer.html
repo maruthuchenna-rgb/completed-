@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=dashboard.html?role=buyer">
+    <title>Redirecting to Buyer Dashboard...</title>
+    <script>
+        localStorage.setItem('realhomes_user_role', 'buyer');
+        window.location.href = 'dashboard.html?role=buyer';
+    </script>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding-top: 50px;">
+    <p>Loading Buyer Dashboard...</p>
+    <p><a href="dashboard.html?role=buyer">Click here if you are not redirected automatically.</a></p>
+</body>
+</html>

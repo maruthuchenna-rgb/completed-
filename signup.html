@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Real Homes</title>
+    
+    <!-- Meta SEO & Favicon -->
+    <meta name="description" content="Register an account with Real Homes to list luxury properties or browse exclusive apartments and villas.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Project Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body style="background-color: #0f172a;">
+    
+    <!-- STANDALONE FULL-SCREEN AUTH WRAPPER (NO SITE HEADER OR SITE FOOTER) -->
+    <div class="auth-standalone-wrapper">
+        <div class="auth-page-overlay"></div>
+
+        <!-- Floating Glowing Ambient Orbs -->
+        <div class="auth-orb auth-orb-1" aria-hidden="true"></div>
+        <div class="auth-orb auth-orb-2" aria-hidden="true"></div>
+
+        <!-- Top Brand Bar & Return Link -->
+        <div class="auth-top-navbar">
+            <a href="index.html" class="auth-brand-logo-standalone">
+                <img src="stackly1.webp" alt="Stackly Logo" style="height: 45px; width: auto;">
+            </a>
+
+            <a href="index.html" class="btn-auth-back-link">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+
+        <!-- Main Centered Sign Up Card Container -->
+        <div class="auth-container">
+            <div class="auth-card">
+                
+                <!-- Auth Tabs -->
+                <div class="auth-nav-tabs">
+                    <a href="login.html" class="auth-tab-link">Sign In</a>
+                    <a href="signup.html" class="auth-tab-link active">Create Account</a>
+                </div>
+
+                <!-- Header Content -->
+                <div class="auth-header-wrap">
+                    <span class="auth-brand-badge">
+                        <i class="fas fa-user-plus"></i> Free Membership
+                    </span>
+                    <h1 class="auth-card-title">Join Real Homes</h1>
+                    <p class="auth-card-subtitle">Select your account type to personalize your experience</p>
+                </div>
+
+                <!-- Role Selection: Buyer / Tenant vs Agent / Seller -->
+                <div class="role-selection-section">
+                    <span class="role-section-label">I am joining as:</span>
+                    <div class="role-cards-grid">
+                        
+                        <!-- Role 1: Buyer / Tenant -->
+                        <div class="role-option-card active" id="roleBuyer" onclick="selectRole('buyer')">
+                            <div class="role-icon-box">
+                                <i class="fas fa-user-tag"></i>
+                            </div>
+                            <div class="role-text-meta">
+                                <div class="role-title">
+                                    <span>Buyer / Tenant</span>
+                                    <i class="fas fa-check-circle role-active-check"></i>
+                                </div>
+                                <p class="role-desc">Looking to buy, rent, or view properties.</p>
+                            </div>
+                        </div>
+
+                        <!-- Role 2: Agent / Seller -->
+                        <div class="role-option-card" id="roleAgent" onclick="selectRole('agent')">
+                            <div class="role-icon-box">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="role-text-meta">
+                                <div class="role-title">
+                                    <span>Agent / Seller</span>
+                                    <i class="fas fa-check-circle role-active-check"></i>
+                                </div>
+                                <p class="role-desc">Looking to list and manage properties.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <form id="signupForm" onsubmit="handleSignupSubmit(event)">
+                    
+                    <!-- Full Name -->
+                    <div class="auth-input-group">
+                        <label class="auth-label" for="signupName">Full Name *</label>
+                        <div class="auth-field-wrap">
+                            <i class="far fa-user auth-field-icon"></i>
+                            <input type="text" id="signupName" class="auth-input" placeholder="e.g. Eleanor Vance" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" onkeypress="return /[a-zA-Z\s]/.test(event.key)">
+                        </div>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="auth-input-group">
+                        <label class="auth-label" for="signupEmail">Email Address *</label>
+                        <div class="auth-field-wrap">
+                            <i class="far fa-envelope auth-field-icon"></i>
+                            <input type="email" id="signupEmail" class="auth-input" placeholder="e.g. eleanor@example.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="auth-input-group">
+                        <label class="auth-label" for="signupPhone">Phone Number *</label>
+                        <div class="auth-field-wrap">
+                            <i class="fas fa-phone-alt auth-field-icon"></i>
+                            <input type="tel" id="signupPhone" class="auth-input" placeholder="e.g. 3055550144" required inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" onkeypress="return /[0-9]/.test(event.key)">
+                        </div>
+                    </div>
+
+                    <!-- Agent Dynamic Fields (Animated Reveal when Agent role is chosen) -->
+                    <div class="agent-extra-fields" id="agentExtraFields">
+                        <div class="auth-input-group">
+                            <label class="auth-label" for="signupAgency">Brokerage / Agency Name *</label>
+                            <div class="auth-field-wrap">
+                                <i class="fas fa-building auth-field-icon"></i>
+                                <input type="text" id="signupAgency" class="auth-input" placeholder="e.g. RealHomes Luxury Realty">
+                            </div>
+                        </div>
+                        <div class="auth-input-group">
+                            <label class="auth-label" for="signupLicense">Real Estate License ID *</label>
+                            <div class="auth-field-wrap">
+                                <i class="fas fa-id-card auth-field-icon"></i>
+                                <input type="text" id="signupLicense" class="auth-input" placeholder="e.g. FL-RE-987412">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="auth-input-group">
+                        <label class="auth-label" for="signupPassword">Password *</label>
+                        <div class="auth-field-wrap">
+                            <i class="fas fa-lock auth-field-icon"></i>
+                            <input type="password" id="signupPassword" class="auth-input" placeholder="Minimum 8 characters" required minlength="8" oninput="checkPasswordStrength(this.value)">
+                            <button type="button" class="auth-pw-toggle" onclick="togglePasswordVisibility('signupPassword', this)" title="Toggle password visibility">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <!-- Live Strength Indicator -->
+                        <div class="password-strength-bar" id="pwStrengthBar">
+                            <span class="pw-bar-segment"></span>
+                            <span class="pw-bar-segment"></span>
+                            <span class="pw-bar-segment"></span>
+                        </div>
+                        <span class="pw-strength-label" id="pwStrengthLabel">Password Strength</span>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="auth-input-group">
+                        <label class="auth-label" for="signupConfirmPassword">Confirm Password *</label>
+                        <div class="auth-field-wrap">
+                            <i class="fas fa-shield-alt auth-field-icon"></i>
+                            <input type="password" id="signupConfirmPassword" class="auth-input" placeholder="Re-enter your password" required minlength="8">
+                            <button type="button" class="auth-pw-toggle" onclick="togglePasswordVisibility('signupConfirmPassword', this)" title="Toggle password visibility">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Terms & Conditions Checkbox -->
+                    <div class="auth-options-row" style="margin-bottom: 24px;">
+                        <label class="auth-remember-label">
+                            <input type="checkbox" id="signupTerms" required>
+                            <span>I agree to the <a href="#" class="auth-forgot-link">Terms of Service</a> & <a href="#" class="auth-forgot-link">Privacy Policy</a></span>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-auth-submit" id="signupSubmitBtn">
+                        <span>Create My Account</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <!-- Social Login Divider -->
+                    <div class="auth-divider">
+                        <span>Or Register With</span>
+                    </div>
+
+                    <!-- Social Buttons -->
+                    <div class="auth-social-buttons">
+                        <a href="#" class="btn-social-auth google-btn" onclick="event.preventDefault(); alert('Google account connected.');">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </a>
+                        <a href="#" class="btn-social-auth facebook-btn" onclick="event.preventDefault(); alert('Facebook account connected.');">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="#" class="btn-social-auth apple-btn" onclick="event.preventDefault(); alert('Apple ID connected.');">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple</span>
+                        </a>
+                    </div>
+
+                </form>
+
+                <!-- Card Footer -->
+                <div class="auth-card-footer">
+                    Already have an account? <a href="login.html">Sign In</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Minimal Bottom Note -->
+        <div class="auth-minimal-footer">
+            &copy; 2026 Real Homes Inc. All rights reserved. &bull; <a href="index.html">Return to Website</a>
+        </div>
+
+    </div>
+
+    <!-- Scripts for Sign Up Page Interactions -->
+    <script>
+        let currentRole = 'buyer';
+
+        function selectRole(role) {
+            currentRole = role;
+            const buyerCard = document.getElementById('roleBuyer');
+            const agentCard = document.getElementById('roleAgent');
+            const agentFields = document.getElementById('agentExtraFields');
+            const agencyInput = document.getElementById('signupAgency');
+            const licenseInput = document.getElementById('signupLicense');
+            
+            if (role === 'buyer') {
+                buyerCard.classList.add('active');
+                agentCard.classList.remove('active');
+                agentFields.classList.remove('active');
+                if (agencyInput) agencyInput.required = false;
+                if (licenseInput) licenseInput.required = false;
+            } else {
+                agentCard.classList.add('active');
+                buyerCard.classList.remove('active');
+                agentFields.classList.add('active');
+                if (agencyInput) agencyInput.required = true;
+                if (licenseInput) licenseInput.required = true;
+            }
+        }
+
+        function togglePasswordVisibility(fieldId, btn) {
+            const input = document.getElementById(fieldId);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function checkPasswordStrength(val) {
+            const bar = document.getElementById('pwStrengthBar');
+            const label = document.getElementById('pwStrengthLabel');
+            bar.className = 'password-strength-bar';
+            
+            if (!val || val.length < 6) {
+                label.textContent = 'Too short';
+                label.style.color = '#ef4444';
+            } else if (val.length < 8) {
+                bar.classList.add('weak');
+                label.textContent = 'Weak password';
+                label.style.color = '#ef4444';
+            } else if (val.length < 11 || !/[0-9]/.test(val)) {
+                bar.classList.add('medium');
+                label.textContent = 'Good password';
+                label.style.color = '#f59e0b';
+            } else {
+                bar.classList.add('strong');
+                label.textContent = 'Strong password';
+                label.style.color = '#10b981';
+            }
+        }
+
+        function handleSignupSubmit(e) {
+            e.preventDefault();
+            const pw = document.getElementById('signupPassword').value;
+            const confirmPw = document.getElementById('signupConfirmPassword').value;
+
+            if (pw !== confirmPw) {
+                alert('Passwords do not match. Please check and try again.');
+                return;
+            }
+
+            const btn = document.getElementById('signupSubmitBtn');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Creating Account...';
+            btn.style.opacity = '0.8';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                const name = document.getElementById('signupName').value;
+                const email = document.getElementById('signupEmail').value;
+                localStorage.setItem('realhomes_user_role', currentRole);
+                localStorage.setItem('realhomes_user_name', name);
+                localStorage.setItem('realhomes_user_email', email);
+                btn.innerHTML = originalHTML;
+                btn.style.opacity = '1';
+                btn.disabled = false;
+                window.location.href = `dashboard.html?role=${currentRole}`;
+            }, 800);
+        }
+    </script>
+</body>
+</html>

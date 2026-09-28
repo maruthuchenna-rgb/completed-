@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found - Real Homes</title>
+    
+    <!-- Meta SEO & Favicon -->
+    <meta name="description" content="The page you are looking for cannot be found. Return to Real Homes homepage or explore our featured properties.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Project Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+        <!-- Top Brand Bar -->
+        <div style="padding: 24px 32px 0; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+            <a href="index.html" class="brand-logo">
+                <img src="stackly1.webp" alt="Stackly Logo" style="height: 45px; width: auto;">
+            </a>
+        </div>
+
+        <!-- MAIN 404 ANIMATED ERROR SECTION -->
+        <main class="error-page-section">
+            
+            <!-- Floating Background Decorative Bubbles -->
+            <div class="error-bubble error-bubble-1" aria-hidden="true"></div>
+            <div class="error-bubble error-bubble-2" aria-hidden="true"></div>
+            <div class="error-bubble error-bubble-3" aria-hidden="true"></div>
+
+            <div class="error-page-container">
+                
+                <!-- Animated 404 Visual with Interactive Floating House -->
+                <div class="error-visual-wrapper">
+                    <span class="error-code-digit digit-left">4</span>
+                    <div class="error-house-icon-wrap" title="Real Homes Property Icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="error-code-digit digit-right">4</span>
+                </div>
+
+                <!-- Error Headings -->
+                <h1 class="error-heading">Oops! That Page Can't Be Found.</h1>
+                <p class="error-description">
+                    It looks like nothing was found at this location. The property or page you are looking for might have been moved, renamed, or is temporarily offline.
+                </p>
+
+                <!-- 2 Action Buttons (Back Home & Back Page) -->
+                <div class="error-actions-group">
+                    <a href="index.html" class="btn-error-home">
+                        <i class="fas fa-home"></i>
+                        <span>Back to Home</span>
+                    </a>
+                    <button type="button" class="btn-error-back" onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html'">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back Page</span>
+                    </button>
+                </div>
+
+                <!-- Quick Property Search Box -->
+                <div class="error-search-box">
+                    <input type="text" class="error-search-input" id="errorSearchInput" placeholder="Search properties, locations, or agents...">
+                    <button type="button" class="btn-error-search" >Search</button>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- SITE FOOTER (DARK THEMED WITH SLANTED TOP) -->
+       
+
+    </div>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
